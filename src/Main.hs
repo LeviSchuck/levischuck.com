@@ -1,6 +1,8 @@
 {-# LANGUAGE OverloadedStrings #-}
 import           Data.Monoid (mappend)
 import           Hakyll
+import           Text.Pandoc.Options
+import qualified Data.Map as M
 
 main :: IO ()
 main = hakyll $ do
@@ -20,9 +22,10 @@ main = hakyll $ do
 
     match "posts/*" $ do
         route $ setExtension "html"
-        compile $ pandocCompiler
+        --compile $ pandocCompiler
+        compile $ pandocCompilerWith defaultHakyllReaderOptions pandocOptions
             >>= loadAndApplyTemplate "templates/post.html"    postCtx
-            >>= loadAndApplyTemplate "templates/default.html" postCtx
+            >>= loadAndApplyTemplate "templates/default.html" (mathCtx `mappend` postCtx)
             >>= relativizeUrls
 
     create ["archive.html"] $ do
@@ -32,6 +35,7 @@ main = hakyll $ do
             let archiveCtx =
                     listField "posts" postCtx (return posts) `mappend`
                     constField "title" "Archives"            `mappend`
+                    mathCtx `mappend`
                     defaultContext
 
             makeItem ""
@@ -47,6 +51,7 @@ main = hakyll $ do
             let indexCtx =
                     listField "posts" postCtx (return posts) `mappend`
                     constField "title" "Home"                `mappend`
+                    mathCtx `mappend`
                     defaultContext
 
             getResourceBody
@@ -61,4 +66,16 @@ main = hakyll $ do
 postCtx :: Context String
 postCtx =
     dateField "date" "%B %e, %Y" `mappend`
+    mathCtx `mappend`
     defaultContext
+
+
+pandocOptions :: WriterOptions
+pandocOptions = defaultHakyllWriterOptions{ writerHTMLMathMethod = MathJax "" }
+
+mathCtx :: Context a
+mathCtx = field "mathjax" $ \item -> do
+    metadata <- getMetadata $ itemIdentifier item
+    return $ if "mathjax" `M.member` metadata
+                  then "<script type=\"text/javascript\" src=\"http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML\"></script>"
+                  else ""
