@@ -17,7 +17,7 @@ main = hakyll $ do
     match (fromList ["contact.markdown"]) $ do
         route   $ setExtension "html"
         compile $ pandocCompiler
-            >>= loadAndApplyTemplate "templates/default.html" defaultContext
+            >>= loadAndApplyTemplate "templates/default.html" (mathCtx `mappend`defaultContext)
             >>= relativizeUrls
 
     match "posts/*" $ do
