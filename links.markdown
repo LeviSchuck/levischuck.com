@@ -8,4 +8,4 @@ title: Link Dump
 + [RavenDB](http://ravendb.net/)
 
 
-More will come as they happen.
+More will come as they intrigue me.
