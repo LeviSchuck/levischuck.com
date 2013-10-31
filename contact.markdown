@@ -2,7 +2,7 @@
 title: Contact
 ---
 
-You can contact `me@levischuck.com`. 
+You can contact [me@levischuck.com](mailto:me@levischuck.com). 
 
 I am also on
 
