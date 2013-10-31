@@ -98,7 +98,7 @@ High School
 ## Activities
 
 University
-:   [Member][] of Brigham Young University Association of Computing Machinery
+:   I am a [Member][] of Brigham Young University Association of Computing Machinery.
 
 Editor
 :   I am a technical editor for the [Rook's Guide to C++][rook], a creative 
