@@ -3,6 +3,10 @@ import           Data.Monoid (mappend)
 import           Hakyll
 import           Text.Pandoc.Options
 import qualified Data.Map as M
+import qualified Data.Set as S
+
+defContext :: Context String
+defContext = mathCtx `mappend` defaultContext
 
 main :: IO ()
 main = hakyll $ do
@@ -17,7 +21,13 @@ main = hakyll $ do
     match (fromList ["contact.markdown", "links.markdown"]) $ do
         route   $ setExtension "html"
         compile $ pandocCompiler
-            >>= loadAndApplyTemplate "templates/default.html" (mathCtx `mappend`defaultContext)
+            >>= loadAndApplyTemplate "templates/default.html" defContext
+            >>= relativizeUrls
+
+    match (fromList ["resume.markdown"]) $ do
+        route   $ setExtension "html"
+        compile $ pandocCompilerWith defaultHakyllReaderOptions pandocOptions
+            >>= loadAndApplyTemplate "templates/res.html" defContext
             >>= relativizeUrls
 
     match "posts/*" $ do
@@ -25,7 +35,7 @@ main = hakyll $ do
         --compile $ pandocCompiler
         compile $ pandocCompilerWith defaultHakyllReaderOptions pandocOptions
             >>= loadAndApplyTemplate "templates/post.html"    postCtx
-            >>= loadAndApplyTemplate "templates/default.html" (mathCtx `mappend` postCtx)
+            >>= loadAndApplyTemplate "templates/default.html" defContext
             >>= relativizeUrls
 
     create ["archive.html"] $ do
@@ -35,8 +45,7 @@ main = hakyll $ do
             let archiveCtx =
                     listField "posts" postCtx (return posts) `mappend`
                     constField "title" "Archives"            `mappend`
-                    mathCtx `mappend`
-                    defaultContext
+                    defContext
 
             makeItem ""
                 >>= loadAndApplyTemplate "templates/archive.html" archiveCtx
@@ -51,8 +60,7 @@ main = hakyll $ do
             let indexCtx =
                     listField "posts" postCtx (return posts) `mappend`
                     constField "title" "Home"                `mappend`
-                    mathCtx `mappend`
-                    defaultContext
+                    defContext
 
             getResourceBody
                 >>= applyAsTemplate indexCtx
@@ -71,7 +79,8 @@ postCtx =
 
 
 pandocOptions :: WriterOptions
-pandocOptions = defaultHakyllWriterOptions{ writerHTMLMathMethod = MathJax "" }
+pandocOptions = d { writerExtensions = S.union (writerExtensions d) multimarkdownExtensions}
+    where d = defaultHakyllWriterOptions{ writerHTMLMathMethod = MathJax "" }
 
 mathCtx :: Context a
 mathCtx = field "mathjax" $ \item -> do
