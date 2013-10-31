@@ -13,6 +13,8 @@ known is [MySQL](http://www.mysql.com/).
 + [WhiteDB](http://whitedb.org/)
 + [RavenDB](http://ravendb.net/)
 + [ArangoDB](http://www.arangodb.org/)
++ [OrientDB](http://www.orientdb.org/)
+
 
 
 More will come as they intrigue me.
