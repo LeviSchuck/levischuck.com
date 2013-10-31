@@ -104,6 +104,11 @@ Editor
 :   I am a technical editor for the [Rook's Guide to C++][rook], a creative 
     commons text book for those starting with C++.
 
+Open Source Projects
+:   I am active on github and release the sources to many of my
+    projects. Here's what [github](http://resume.github.io/?kloplop321) has
+    to say about me, as my [report card](http://osrc.dfm.io/kloplop321).
+
 [Dynamo]: http://www.read.seas.harvard.edu/~kohler/class/cs239-w08/decandia07dynamo.pdf
 [Datomic]: http://www.datomic.com/
 [Speakerdeck]: https://speakerdeck.com/kloplop321/stars
