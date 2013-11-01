@@ -12,14 +12,14 @@
 
 ## Objectives
 Databases
-:   I actively explore the architectures of new databases out there.
-    Although I already know some of how Oracle 10/11g work internally,
+:   I actively explore the architectures of new databases.
+    I am familiar with the internal workings of 10/11g,
     I also study and dissect systems like MongoDB, read papers like the
     [Amazon Dynamo paper][Dynamo], and hope to write my own database similar
     to [Datomic][].
 
 Distributed Systems
-:   Continuously, I watch and [read the latest presentations][Speakerdeck]
+:   I invest significant time watching and [reading the latest presentations][Speakerdeck]
     on large, networked, concurrent, distributed services. This is where
     I want to be an expert. Giving a presentation some day would also be
     exciting!
@@ -50,10 +50,10 @@ August 2010 - December 2012
 January 2013 - July 2013
 :   *Volunteer System Administrator for Fourth Wall LLC*
     
-    I increased the uptime of a site for a moderately sized community
+    Increased the uptime of a site for a moderately sized community
     with about 400-500 on-line at any moment. Reduced page execution times
     by a magnitude and prevented future disk failures by reducing
-    disk thrashing. I fixed bugs in the local PHPFox installation
+    disk thrashing. Fixed bugs in the local PHPFox installation
     and implemented caching mechanisms that increased the request load
     capacity of the server.
 
