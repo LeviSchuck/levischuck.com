@@ -17,7 +17,7 @@ main = T.putStr $ renderWith compact $ do
         basetextcolor
         backgroundImage $ url "/images/dots.svg"
         fontSize $ pct 100
-        "lineHeight" -: "1.25"
+        "line-height" -: "1.25"
     "#header" ? do
         borderBottom solid (px 2) black
         sym2 padding (px 12) 0
