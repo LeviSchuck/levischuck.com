@@ -57,5 +57,8 @@ main = T.putStr $ renderWith compact $ do
     forM_ modular $ \(tag, size, pad) -> tag ? do
         fontSize $ em size
         sym2 padding (em pad) 0
-
+    blockquote ? do
+        borderLeft solid (px 4) gray
+        paddingLeft $ em 1
+        marginLeft $ em 1
 

@@ -14,6 +14,7 @@ known is [MySQL](http://www.mysql.com/).
 + [ArangoDB](http://www.arangodb.org/) Flexible model database with an SQL-like language
 + [OrientDB](http://www.orientdb.org/) Lesser known Graph database in Java
 + [Datomic](http://www.datomic.com/) An immutable database with local queries
++ [InfluxDB](http://influxdb.org) Distributed time series, events, and metrics database in Go
 
 # Blogs I started following
 
@@ -29,6 +30,12 @@ known is [MySQL](http://www.mysql.com/).
 
 + [Polymer](http://www.polymer-project.org/) a polyfill for upcoming component web standards
 + [AuraJS](http://aurajs.com/) RequireJS declarative components
+
+# Random indivdual posts
+
++ [Fourier transform](http://nautil.us/blog/the-math-trick-behind-mp3s-jpegs-and-homer-simpsons-face) A bit on how encoding behind things can use cool math
++ [Feynman Technique](http://www.farnamstreetblog.com/2012/04/learn-anything-faster-with-the-feynman-technique/) Learn faster by teaching and simplifying
+
 
 ---
 
