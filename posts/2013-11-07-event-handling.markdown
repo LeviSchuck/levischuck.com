@@ -29,7 +29,7 @@ the solutions became overly complex, unintuitive,
 and started to require assumptions and preconditions
 that were too great to require. 
 
-It quickly became obvious that need to be
+It quickly became obvious that I needed to be
 conservative in the design. Here are some of the
 things that will not make it:
 
