@@ -35,6 +35,7 @@ known is [MySQL](http://www.mysql.com/).
 
 + [Fourier transform](http://nautil.us/blog/the-math-trick-behind-mp3s-jpegs-and-homer-simpsons-face) A bit on how encoding and lossy compression behind things can use some cool math.
 + [Feynman Technique](http://www.farnamstreetblog.com/2012/04/learn-anything-faster-with-the-feynman-technique/) Learn faster by teaching and simplifying the material in your own words!
++ [You are not a Software Engineer](http://www.chrisaitchison.com/2011/05/03/you-are-not-a-software-engineer/) You are a Software Gardener
 
 
 ---
