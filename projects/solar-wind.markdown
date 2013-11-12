@@ -32,6 +32,9 @@ Solar Wind will be a library which can be
 embedded into any kind of application where
 the final use cases for listeners for events
 are not entirely known at the beginning.
+These events will consist of
+[interesting information][]
+for any listener registered at the time.
 
 These applications *for now* will not have
 the need or support for confirmations that
@@ -40,6 +43,9 @@ certain listeners have received the event.
 The mechanism is entirely fire-and-forget.
 It is between what a job queue is like beanstalk
 and an actor based system like [akka][].
+Like actors and job queues, it will help
+lay the foundation for developing
+[asynchronous systems][].
 
 
 
