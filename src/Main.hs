@@ -4,6 +4,7 @@ import           Hakyll
 import           Text.Pandoc.Options
 import qualified Data.Map as M
 import qualified Data.Set as S
+import           Control.Monad
 
 defContext :: Context String
 defContext = mathCtx `mappend` defaultContext
@@ -34,18 +35,17 @@ main = hakyll $ do
             >>= loadAndApplyTemplate "templates/res.html" defContext
             >>= relativizeUrls
 
-    match "posts/*" $ do
+    let postLike = \template -> do
         route $ setExtension "html"
         compile $ pandocCompilerWith defaultHakyllReaderOptions pandocOptions
-            >>= loadAndApplyTemplate "templates/post.html"    postCtx
+            >>= loadAndApplyTemplate (fromFilePath $ "templates/" ++ template ++ ".html") postCtx
             >>= loadAndApplyTemplate "templates/default.html" defContext
             >>= relativizeUrls
-    match "projects/*" $ do
-        route $ setExtension "html"
-        compile $ pandocCompilerWith defaultHakyllReaderOptions pandocOptions
-            >>= loadAndApplyTemplate "templates/project.html"    postCtx
-            >>= loadAndApplyTemplate "templates/default.html" defContext
-            >>= relativizeUrls
+
+    let kinds = ["post", "project", "concept"]
+    forM_ kinds $ \k -> do
+        match (fromGlob $ k ++ "s/*") $ postLike k
+
 
     create ["archive.html"] $ do
         route idRoute
