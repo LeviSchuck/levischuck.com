@@ -16,6 +16,26 @@ known is [MySQL](http://www.mysql.com/).
 + [Datomic](http://www.datomic.com/) An immutable database with local queries
 + [InfluxDB](http://influxdb.org) Distributed time series, events, and metrics database in Go
 
+# Languages of Interest
+
+## Used
++ [Opa](http://opalang.org) Compile-To-Javascript functional language.
+    Not really a *javascript framework* as the marketing buzzwords suggest.
+    Really cool, but found to be __intensively slow__ in practice and __set off
+    alarms__ for abuse at [dotcloud](https://www.dotcloud.com) for a
+    [project](https://github.com/kloplop321/cactusdb)
+    I made to keep track of plants. Runs on top of Node.
++ [Haskell](http://www.haskell.org/haskellwiki/Haskell) Most recently
+     became a fond language for me. It is a __purely functional__ language.
+     This requires a huge mind shift to use effectively.
+     I feel this language has really helped me think as a software developer.
+
+
+## Interested but have not used
++ [Ceylon](http://ceylon-lang.org) Redhat's recently relased language for the web.
++ [Rust](http://www.rust-lang.org) Mozilla's concurrent and memory-safe language.
+    Still going through constant breaking changes.
+
 # Blogs I started following
 
 + [Jabberwocky](http://jabberwocky.eu/) Conference speaker, does ruby and Haskell
