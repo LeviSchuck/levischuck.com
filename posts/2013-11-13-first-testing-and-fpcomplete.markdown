@@ -46,6 +46,32 @@ as well try be the guy who gets the bumps (which I
 report) on his open source project, to help the
 IDE become a better product.*
 
+### Getting it to even compile
+
+Since [Tasty][] is not in stackage,
+but it is in Hackage, I tried to get use the
+experimental package feature in the settings.
+
+Tried...
+
+    Hackage: tasty
+    Hackage: tasty-hunit
+    Hackage: tasty-quickcheck
+
+It complained about not finding `Test.Tasty.QuickCheck`.
+This didn't make much sense. I changed the last line
+to a manual git checkout and it seemed to function,
+though it slowed down setup time.
+    
+    Git: https://github.com/feuerbach/tasty 791cbefbf8ca531b3b27cb07809a04581d38e1c9
+  quickcheck
+
+Then I was finally able to use it.
+I hope that the creator is willing to contribute
+to gettting into stackage and maintaining it.
+
+### Execution target
+
 Then came some immense frustration. How do I get
 the project to recognize the test as an executable
 target?
