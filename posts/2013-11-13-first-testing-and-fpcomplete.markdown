@@ -136,7 +136,7 @@ transactions I was testing for. *Namely,
 declaring thread ownership of a resource.*
 
 I threw in a few `threadDelay 1000`
-*which is in microseconds, mind you.
+*which is in microseconds, mind you.*
 
 Tada!
 
