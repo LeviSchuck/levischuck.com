@@ -63,8 +63,7 @@ This didn't make much sense. I changed the last line
 to a manual git checkout and it seemed to function,
 though it slowed down setup time.
     
-    Git: https://github.com/feuerbach/tasty 791cbefbf8ca531b3b27cb07809a04581d38e1c9
-  quickcheck
+    Git: https://github.com/feuerbach/tasty 791cbefbf8ca531b3b27cb07809a04581d38e1c9 quickcheck
 
 Then I was finally able to use it.
 I hope that the creator is willing to contribute
