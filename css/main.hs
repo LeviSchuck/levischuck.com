@@ -10,6 +10,8 @@ main = T.putStr $ renderWith compact $ do
         secondcolor = color "#555555"
     a ? do
         color "#43557F"
+    img ? do
+        maxWidth $ pct 100
     body ? do
         width $ px 600
         sym2 margin 0 auto
