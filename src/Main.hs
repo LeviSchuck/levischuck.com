@@ -7,7 +7,10 @@ import qualified Data.Set as S
 import           Control.Monad
 
 defContext :: Context String
-defContext = mathCtx `mappend` defaultContext
+defContext =
+    mathCtx
+    `mappend`  defaultContext
+
 
 main :: IO ()
 main = hakyll $ do
