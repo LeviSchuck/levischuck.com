@@ -138,7 +138,15 @@ declaring thread ownership of a resource.*
 I threw in a few `threadDelay 1000`
 *which is in microseconds, mind you.*
 
+*EDIT: I've solved this without thread delays now.
+I used my `sleepOnSTM` method which listened for a
+signal on changing a `Nothing` to a `Just ()`.*
+
 Tada!
+
+Make sure you test your concurrent stuff in both
+GHCI and compiled to ensure that you aren't missing
+something obvious!
 
 ## Conclusions
 
