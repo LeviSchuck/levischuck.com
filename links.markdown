@@ -17,6 +17,12 @@ known is [MySQL](http://www.mysql.com/).
 + [InfluxDB](http://influxdb.org) Distributed time series, events, and metrics database in Go
 + [RocksDB](http://rocksdb.org) An embeddable persistant (with LevelDB) key-value store. Created by Facebook, released under the BSD license.
 
+# Server Technologies
+
++ [Docker](http://www.docker.io) "An open source project to pack, ship and run any application as a lightweight container"
++ [CoreOS](http://coreos.com) The container operating system/layer for Docker. Made in Go.
+
+
 # Languages of Interest
 
 ## Used
