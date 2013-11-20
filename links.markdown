@@ -16,6 +16,7 @@ known is [MySQL](http://www.mysql.com/).
 + [Datomic](http://www.datomic.com/) An immutable database with local queries
 + [InfluxDB](http://influxdb.org) Distributed time series, events, and metrics database in Go
 + [RocksDB](http://rocksdb.org) An embeddable persistant (with LevelDB) key-value store. Created by Facebook, released under the BSD license.
++ [Trousseau](https://github.com/oleiade/trousseau) Networked encrypted key-value database
 
 # Server Technologies
 
