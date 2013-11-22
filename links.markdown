@@ -65,7 +65,7 @@ known is [MySQL](http://www.mysql.com/).
 + [Feynman Technique](http://www.farnamstreetblog.com/2012/04/learn-anything-faster-with-the-feynman-technique/) Learn faster by teaching and simplifying the material in your own words!
 + [You are not a Software Engineer](http://www.chrisaitchison.com/2011/05/03/you-are-not-a-software-engineer/) You are a Software Gardener
 + [Edn Format](https://github.com/edn-format/edn) Like JSON, but represents sets natively.
-
++ [Raft](http://highscalability.com/blog/2013/8/7/raft-in-search-of-an-understandable-consensus-algorithm.html) An easily understandable consensus algorithm for distributed consistent data.
 
 ---
 
