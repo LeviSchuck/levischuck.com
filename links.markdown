@@ -66,6 +66,7 @@ known is [MySQL](http://www.mysql.com/).
 + [You are not a Software Engineer](http://www.chrisaitchison.com/2011/05/03/you-are-not-a-software-engineer/) You are a Software Gardener
 + [Edn Format](https://github.com/edn-format/edn) Like JSON, but represents sets natively.
 + [Raft](http://highscalability.com/blog/2013/8/7/raft-in-search-of-an-understandable-consensus-algorithm.html) An easily understandable consensus algorithm for distributed consistent data.
++ [Ebay and zero-downtime](http://www.ebaytechblog.com/2013/11/21/zero-downtime-instant-deployment-and-rollback/) How ebay manages to do instant deployment and rollback on nodes.
 
 ---
 
