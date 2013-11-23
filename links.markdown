@@ -67,6 +67,7 @@ known is [MySQL](http://www.mysql.com/).
 + [Edn Format](https://github.com/edn-format/edn) Like JSON, but represents sets natively.
 + [Raft](http://highscalability.com/blog/2013/8/7/raft-in-search-of-an-understandable-consensus-algorithm.html) An easily understandable consensus algorithm for distributed consistent data.
 + [Ebay and zero-downtime](http://www.ebaytechblog.com/2013/11/21/zero-downtime-instant-deployment-and-rollback/) How ebay manages to do instant deployment and rollback on nodes.
++ [StackOverflow's means to scale](http://nickcraver.com/blog/2013/11/22/what-it-takes-to-run-stack-overflow/) describes the intense load their services take on, how 384GB of RAM helps, and how important it is to make your code fast in the first place.
 
 ---
 
