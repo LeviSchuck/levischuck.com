@@ -54,6 +54,7 @@ learning curve.
 
 For the rest of this document, refer to the following
 type synonyms:
+
 ```Haskell
 type DoubleMatrix = Array U (Z :. Int :. Int) Double
 type IntMatrix = Array U (Z :. Int :. Int) Int
