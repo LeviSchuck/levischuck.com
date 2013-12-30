@@ -325,3 +325,4 @@ this service should come with features such as:
 [cryp]: http://blog.existentialize.com/so-you-want-to-crypto.html
 [adobe]: http://krebsonsecurity.com/2013/10/adobe-breach-impacted-at-least-38-million-users/
 [cometchat]: http://www.cometchat.com/
+[DHT]: http://en.wikipedia.org/wiki/Distributed_hash_table
