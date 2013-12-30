@@ -25,6 +25,9 @@ main = hakyll $ do
     match "css/*.hs" $ do
         route   $ setExtension "css"
         compile $ getResourceString >>= withItemBody (unixFilter "runghc" [])
+    match "graphs/*.dot" $ do
+        route   $ setExtension "svg"
+        compile $ getResourceString >>= withItemBody (unixFilter "dot" ["-Tsvg"])
 
     match (fromList ["contact.markdown", "links.markdown"]) $ do
         route   $ setExtension "html"

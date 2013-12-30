@@ -10,7 +10,7 @@ main = T.putStr $ renderWith compact $ do
         secondcolor = color "#555555"
     a ? do
         color "#43557F"
-    img ? do
+    (img <> object <> embed) ? do
         maxWidth $ pct 100
     body ? do
         width $ px 600
@@ -63,4 +63,25 @@ main = T.putStr $ renderWith compact $ do
         borderLeft solid (px 4) gray
         paddingLeft $ em 1
         marginLeft $ em 1
+    figure ? do
+        marginLeft 0
+        marginRight 0
+    figcaption ? do
+        textAlign $ alignSide sideCenter
+    let defSpace = 11
+    dl ? do -- Definition List
+        marginBottom $ em 1
+        dt ? do -- Definition Term
+            textTransform uppercase
+            display inline
+            fontWeight bold
+            float floatLeft
+            width $ em defSpace
+            clear clearLeft
+            "text-overflow" -: "ellipsis"
+            "white-space" -: "nowrap"
+            textAlign $ alignSide sideRight
+            overflow hidden
+        dd ? do -- Definition Description
+            marginLeft $ em $ 1 + defSpace
 

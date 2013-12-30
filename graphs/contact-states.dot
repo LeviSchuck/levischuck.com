@@ -1,0 +1,61 @@
+digraph contact_states {
+	subgraph{
+		rank=same;
+		user1 [label="User 1 requests to add User 2"];
+		user2 [label="User 2 requests to add User 1"];
+	}
+	subgraph {
+		rank=same;
+		add_requested_to [label="Add User 2"];
+		add_requested_from [label="Add User 1"];
+
+		in_this_user [label="In 1's List"];
+		in_other_user [label="In 2's List"];
+	}
+	added [label="Added"];
+	subgraph {
+		rank=same;
+		user1_pending [label="User 1 pending"];
+		user2_pending [label="User 2 pending"];
+	}
+	subgraph {
+		rank=same;
+		user1_blocked [label="In User 1 Block list"];
+		user2_blocked [label="In User 2 Block list"];
+	}
+	
+	user12_blocked [label="Both users block each other"];
+
+
+	user1 -> add_requested_to [label="Send request to User 2"];
+	user2 -> add_requested_from [label="Send request to User 1"];
+	
+	in_this_user -> add_requested_to [label="Resubmit request"];
+	in_other_user -> add_requested_from [label="Resubmit request"];
+	user1 -> in_this_user [xlabel="Place into list ", style=dashed];
+	user2 -> in_other_user [label=" Place into list", style=dashed];
+	
+	add_requested_to -> user2_pending [label="Automatically", style=dashed];
+	add_requested_from -> user1_pending [label="Automatically", style=dashed];
+
+	subgraph {
+		edge [color=darkgreen, fontcolor=darkgreen];
+		user2_pending -> added [xlabel="User 2 Accepts"];
+		user1_pending -> added [label="User 1 Accepts"];
+		user12_blocked -> user1_blocked [label="User 2 unblocks User 2"];
+		user12_blocked -> user2_blocked [label="User 1 unblocks User 2"];
+		user1_blocked -> added [label="User 1 unblocks user 2"];
+		user2_blocked -> added [label="User 2 unblocks user 1"];
+	}
+	subgraph {
+		edge [color=red, fontcolor=red];
+		added -> in_this_user [label="User 2 Removes"];
+		added -> in_other_user [label="User 1 Removes"];
+		user2_pending -> in_this_user [label="Denied"];
+		user1_pending -> in_other_user [label="Denied"];
+		added -> user1_blocked [xlabel="User 1 Blocks User 2"];
+		added -> user2_blocked [xlabel="User 2 Blocks User 1"];
+		user1_blocked -> user12_blocked [xlabel="User 2 Blocks User 1"];
+		user2_blocked -> user12_blocked [xlabel="User 1 Blocks User 2"];
+	}
+}
