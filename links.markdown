@@ -70,6 +70,11 @@ known is [MySQL](http://www.mysql.com/).
 + [StackOverflow's means to scale](http://nickcraver.com/blog/2013/11/22/what-it-takes-to-run-stack-overflow/) describes the intense load their services take on, how 384GB of RAM helps, and how important it is to make your code fast in the first place.
 + [Old SEO methods cause panic](http://www.theawl.com/2013/12/the-new-spammer-panic) If only this had changed much sooner..
 
+# Javascript Libraries
+
++ [JointJS](http://jointjs.com/api) A graphing library with canvas.
+
+
 ---
 
 More will come as they intrigue me.
