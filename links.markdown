@@ -58,6 +58,7 @@ known is [MySQL](http://www.mysql.com/).
 
 + [Polymer](http://www.polymer-project.org/) a polyfill for upcoming component web standards
 + [AuraJS](http://aurajs.com/) RequireJS declarative components
++ [React](http://facebook.github.io/react/) Uses a virtual DOM to speed up the rendering process
 
 # Random indivdual posts
 
@@ -71,11 +72,12 @@ known is [MySQL](http://www.mysql.com/).
 + [Old SEO methods cause panic](http://www.theawl.com/2013/12/the-new-spammer-panic) If only this had changed much sooner..
 + [Real Time Systems](http://blog.flaper87.com/post/52e43f93d987d2cc17700b58/) This defines what real time really means
 + [AWS Tips](http://wblinks.com/notes/aws-tips-i-wish-id-known-before-i-started/) Using AWS definitely does seem to be a strong shift in thinking, this helps bridge the gap.
++ [UX Crash Course](http://thehipperelement.com/post/75476711614/ux-crash-course-31-fundamentals) Fundamentals in UX
 
 # Javascript Libraries
 
 + [JointJS](http://jointjs.com/api) A graphing library with canvas.
-
++ [Moment.js](http://momentjs.com) A javascript date library for parsing, validating, manipulating, and formatting dates.
 
 ---
 
