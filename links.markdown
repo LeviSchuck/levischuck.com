@@ -56,6 +56,7 @@ known is [MySQL](http://www.mysql.com/).
 + [Datomic Blog](http://blog.datomic.com/) Datomic's blog and their progress
 + [The If Works](http://blog.jcoglan.com) Guy behind Faye, does Ruby and Node.js
 + [Aphyr](http://aphyr.com/) with his "Call me maybe" distributed services series
++ [Noel](http://noelwelsh.com) He does web services with Scala and has an emphasis on functional approaches for distributed systems
 
 # Exciting front end projects
 
