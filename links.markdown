@@ -76,6 +76,7 @@ known is [MySQL](http://www.mysql.com/).
 + [Real Time Systems](http://blog.flaper87.com/post/52e43f93d987d2cc17700b58/) This defines what real time really means
 + [AWS Tips](http://wblinks.com/notes/aws-tips-i-wish-id-known-before-i-started/) Using AWS definitely does seem to be a strong shift in thinking, this helps bridge the gap.
 + [UX Crash Course](http://thehipperelement.com/post/75476711614/ux-crash-course-31-fundamentals) Fundamentals in UX
++ [Little's Law in a Parallel Universe](http://blog.paralleluniverse.co/2014/02/04/littles-law/) By Parallel, he means running parallel in our universe. Interesting stuff when it comes to functional programming.
 
 # Javascript Libraries
 
