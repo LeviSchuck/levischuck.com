@@ -70,6 +70,7 @@ known is [MySQL](http://www.mysql.com/).
 + [StackOverflow's means to scale](http://nickcraver.com/blog/2013/11/22/what-it-takes-to-run-stack-overflow/) describes the intense load their services take on, how 384GB of RAM helps, and how important it is to make your code fast in the first place.
 + [Old SEO methods cause panic](http://www.theawl.com/2013/12/the-new-spammer-panic) If only this had changed much sooner..
 + [Real Time Systems](http://blog.flaper87.com/post/52e43f93d987d2cc17700b58/) This defines what real time really means
++ [AWS Tips](http://wblinks.com/notes/aws-tips-i-wish-id-known-before-i-started/) Using AWS definitely does seem to be a strong shift in thinking, this helps bridge the gap.
 
 # Javascript Libraries
 
