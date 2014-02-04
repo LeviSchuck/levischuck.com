@@ -37,7 +37,10 @@ known is [MySQL](http://www.mysql.com/).
      became a fond language for me. It is a __purely functional__ language.
      This requires a huge mind shift to use effectively.
      I feel this language has really helped me think as a software developer.
-
++ [ClojureScript](https://github.com/clojure/clojurescript) Compiles Clojure to JavaScript.
+     It is really cool since I can do Go-like CSP, and with Facebook's react, make
+     fast, dependable UIs that do not leak. Unfortunately, the JS that is emitted is
+     quite fat.
 
 ## Interested but have not used
 + [Ceylon](http://ceylon-lang.org) Redhat's recently relased language for the web.
