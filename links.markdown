@@ -80,6 +80,7 @@ known is [MySQL](http://www.mysql.com/).
 + [Little's Law in a Parallel Universe](http://blog.paralleluniverse.co/2014/02/04/littles-law/) By Parallel, he means running parallel in our universe. Interesting stuff when it comes to functional programming.
 + [Salted Password Hashing - Doing it Right](https://crackstation.net/hashing-security.htm) Some insights into better security design, which reminds me of
     [Security Through Obesity](http://ethanheilman.tumblr.com/post/28481738192/security-through-obesity).
++ [Saving your S3 Bill](http://www.appneta.com/blog/s3-list-get-bucket-default/) Apparently get_bucket and keys can jack up the costs, these guys reduced their costs by 90%.
 
 # Javascript Libraries
 
