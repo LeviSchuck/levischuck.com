@@ -78,6 +78,8 @@ known is [MySQL](http://www.mysql.com/).
 + [AWS Tips](http://wblinks.com/notes/aws-tips-i-wish-id-known-before-i-started/) Using AWS definitely does seem to be a strong shift in thinking, this helps bridge the gap.
 + [UX Crash Course](http://thehipperelement.com/post/75476711614/ux-crash-course-31-fundamentals) Fundamentals in UX
 + [Little's Law in a Parallel Universe](http://blog.paralleluniverse.co/2014/02/04/littles-law/) By Parallel, he means running parallel in our universe. Interesting stuff when it comes to functional programming.
++ [Salted Password Hashing - Doing it Right](https://crackstation.net/hashing-security.htm) Some insights into better security design, which reminds me of
+    [Security Through Obesity](http://ethanheilman.tumblr.com/post/28481738192/security-through-obesity).
 
 # Javascript Libraries
 
