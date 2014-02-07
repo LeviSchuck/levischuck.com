@@ -22,7 +22,7 @@ known is [MySQL](http://www.mysql.com/).
 
 + [Docker](http://www.docker.io) "An open source project to pack, ship and run any application as a lightweight container"
 + [CoreOS](http://coreos.com) The container operating system/layer for Docker. Made in Go.
-
++ [dweet](http://dweet.io) A tweet-like event service for the internet of things. 
 
 # Languages of Interest
 
