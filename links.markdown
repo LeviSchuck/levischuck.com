@@ -83,6 +83,8 @@ known is [MySQL](http://www.mysql.com/).
 + [Saving your S3 Bill](http://www.appneta.com/blog/s3-list-get-bucket-default/) Apparently get_bucket and keys can jack up the costs, these guys reduced their costs by 90%.
 + [Swap Beta idea](http://blog.frontapp.com/dont-give-access-to-your-beta-for-free-swap-it/) How to get more active users by a bit of barter / trade for beta access.
 + [Micro Service Architecture](http://yobriefca.se/blog/2013/04/29/micro-service-architecture/) Defines what MSA is, which twitter uses and most large-scale systems like eBay as well.
++ [Load balancing in AWS](http://engineering.chartbeat.com/2014/02/12/part-2-lessons-learned-tuning-tcp-and-nginx-in-ec2/) They reduced their response time by 98.5% by moving from a homegrown solution to Amazon's ELB.
++ [Smartstack Service Discovery](http://nerds.airbnb.com/smartstack-service-discovery-cloud/) An inverted way of balancing services.
 
 # Javascript Libraries
 
