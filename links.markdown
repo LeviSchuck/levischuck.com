@@ -91,6 +91,7 @@ known is [MySQL](http://www.mysql.com/).
 + [JointJS](http://jointjs.com/api) A graphing library with canvas.
 + [Moment.js](http://momentjs.com) A javascript date library for parsing, validating, manipulating, and formatting dates.
 + [sigmajs](http://sigmajs.org/) Node graph drawing library
++ [Seneca](http://senecajs.org/) A Micro-Services toolkit for Node.js
 
 ---
 
