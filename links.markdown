@@ -17,12 +17,14 @@ known is [MySQL](http://www.mysql.com/).
 + [InfluxDB](http://influxdb.org) Distributed time series, events, and metrics database in Go
 + [RocksDB](http://rocksdb.org) An embeddable persistant (with LevelDB) key-value store. Created by Facebook, released under the BSD license.
 + [Trousseau](https://github.com/oleiade/trousseau) Networked encrypted key-value database
++ [Deep DB White Paper](http://deep.is/knowledge/deepdb-white-paper/) How Deep DB uses append-only immutable data structures to provide a scalable database.
 
 # Server Technologies
 
 + [Docker](http://www.docker.io) "An open source project to pack, ship and run any application as a lightweight container"
 + [CoreOS](http://coreos.com) The container operating system/layer for Docker. Made in Go.
 + [dweet](http://dweet.io) A tweet-like event service for the internet of things. 
++ [Algolia Search As A Service](http://www.algolia.com/features) A search-as-you-type service with fast response times.
 
 # Languages of Interest
 
@@ -85,7 +87,6 @@ known is [MySQL](http://www.mysql.com/).
 + [Micro Service Architecture](http://yobriefca.se/blog/2013/04/29/micro-service-architecture/) Defines what MSA is, which twitter uses and most large-scale systems like eBay as well.
 + [Load balancing in AWS](http://engineering.chartbeat.com/2014/02/12/part-2-lessons-learned-tuning-tcp-and-nginx-in-ec2/) They reduced their response time by 98.5% by moving from a homegrown solution to Amazon's ELB.
 + [Smartstack Service Discovery](http://nerds.airbnb.com/smartstack-service-discovery-cloud/) An inverted way of balancing services.
-+ [Deep DB White Paper](http://deep.is/knowledge/deepdb-white-paper/) How Deep DB uses append-only immutable data structures to provide a scalable database.
 
 # Javascript Libraries
 
