@@ -88,6 +88,7 @@ known is [MySQL](http://www.mysql.com/).
 + [Load balancing in AWS](http://engineering.chartbeat.com/2014/02/12/part-2-lessons-learned-tuning-tcp-and-nginx-in-ec2/) They reduced their response time by 98.5% by moving from a homegrown solution to Amazon's ELB.
 + [Smartstack Service Discovery](http://nerds.airbnb.com/smartstack-service-discovery-cloud/) An inverted way of balancing services.
 + [Docker Base Images](http://phusion.github.io/baseimage-docker/) How you are probably doing docker wrong, and how you can do better.
++ [Regex Routing](http://nikic.github.io/2014/02/18/Fast-request-routing-using-regular-expressions.html) Rather than do a sequence of individual regexes, why not try to combine them? Invalid URLs can be determined much quicker.
 
 # Javascript Libraries
 
