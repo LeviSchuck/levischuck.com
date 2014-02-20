@@ -89,6 +89,8 @@ known is [MySQL](http://www.mysql.com/).
 + [Smartstack Service Discovery](http://nerds.airbnb.com/smartstack-service-discovery-cloud/) An inverted way of balancing services.
 + [Docker Base Images](http://phusion.github.io/baseimage-docker/) How you are probably doing docker wrong, and how you can do better.
 + [Regex Routing](http://nikic.github.io/2014/02/18/Fast-request-routing-using-regular-expressions.html) Rather than do a sequence of individual regexes, why not try to combine them? Invalid URLs can be determined much quicker.
++ [Flow Based Programming Concept](http://www.fastcolabs.com/3016289/how-an-arcane-coding-method-from-1970s-banking-software-could-save-the-sanity-of-web-develop) Although developed early on, this technique fell out of favor when it came to writing assembly for Von-Neumann machines. These days, it is significantly relevant, visual and audio effects artists use it, why not us?
+
 
 # Javascript Libraries
 
