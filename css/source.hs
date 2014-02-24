@@ -33,4 +33,5 @@ main = putCss $ do
         borderRadius (px 2) (px 2) (px 2) (px 2)
         backgroundColor "#272822"
         color white
+        overflowY scroll
 		

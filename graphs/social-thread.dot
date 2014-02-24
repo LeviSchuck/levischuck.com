@@ -1,0 +1,41 @@
+digraph social_thread {
+	Anonymous_Thread;
+	User_1;
+	User_1 -> Anonymous_Thread [label="Ownership" dir="both"];
+	Anonymous_Thread -> First_Post;
+	subgraph Post_Ownership {
+		edge[color="green" dir="both"]
+		User_1 -> First_Post;
+		User_2 -> Second_Post;
+		User_3 -> Third_Post;
+		User_1 -> Fourth_Post;
+	}
+	subgraph cluster_Posts {
+		edge[style=invis]
+		First_Post -> Second_Post -> Third_Post -> Fourth_Post;
+
+	}
+	subgraph comments {
+		Commentary_1;
+		Commentary_2;
+		Commentary_3;
+		subgraph {
+			edge[color="red"]
+			Commentary_1 -> First_Post;
+			Commentary_2 -> First_Post;
+			Commentary_3 -> Third_Post;
+		}
+		subgraph {
+			edge[color="green" dir="both"]
+			User_3 -> Commentary_1;
+			User_2 -> Commentary_2;
+			User_1 -> Commentary_3;
+		}
+		
+	}
+	subgraph active {
+		Users_Active -> User_1;
+		Users_Active -> User_3;
+		Anonymous_Thread -> Users_Active;
+	}
+}

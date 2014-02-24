@@ -1,0 +1,21 @@
+digraph social_posts {
+	/*ranksep=3.0; nodesep=2.0;*/
+	subgraph Posts {
+		edge[color="red"]
+		User_1 -> User_1_Posts;
+		User_1_Posts -> User_1_Post_Entry_1;
+		User_1_Posts -> User_1_Post_Entry_2;
+	}
+	subgraph Blogs {
+		edge[color="red"]
+		User_1 -> User_1_Blogs;
+		User_1_Blogs -> User_1_Blog_1;
+	}
+	subgraph Feed {
+		User_2 -> User_2_Feed;
+		User_2_Feed -> User_2_Feed_Block_1;
+		User_2_Feed_Block_1 -> User_1_Post_Entry_1;
+		User_2_Feed_Block_1 -> User_1_Post_Entry_2;
+		User_2_Feed_Block_1 -> User_1_Blog_1;
+	}
+}

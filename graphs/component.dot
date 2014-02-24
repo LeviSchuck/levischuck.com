@@ -1,0 +1,10 @@
+digraph component {
+	Component -> Properties;
+	Properties -> PContract;
+	PContract [label="Property Contracts"];
+	Component -> Entities;
+	Entities -> Attributes;
+	Component -> Attributes;
+	Attr_Contracts [label="Attribute Contracts"];
+	PContract -> Attr_Contracts;
+}

@@ -80,6 +80,8 @@ main = T.putStr $ renderWith compact $ do
         color white
         margin 0 0 0 0
         fontSize (pct 125)
+        (a <> h1 <> h2 <> h3 <> h4 <> h5) ? do
+            color white
     ".figure" ? do
         textAlign $ alignSide sideCenter
     figure ? do

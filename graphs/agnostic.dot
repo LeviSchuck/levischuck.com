@@ -1,0 +1,152 @@
+digraph Agnostic_Engine {
+  compound=true;
+
+  graph [pos = "0,0!", labeljust=l, nojustify=false, label=<
+  Localhost Port use:<BR ALIGN="LEFT" /> 
+  58000: Game Code Server<BR ALIGN="LEFT" /> 
+  59000: Engine Control Server<BR ALIGN="LEFT" /> 
+  59100: Engine Session Server
+  >];
+  subgraph drive_contents {
+	  collective_data [label="Collective User Data"];
+	  static_configs [label="Static Game Configurations"];
+	  static_resources [label="Static Game Resources"];
+	  subgraph {
+	  	rank = same
+	  	saved_game [label="Saved Game Configurations"];
+	  	user_content [label="User Created Content"];
+	  	saved_instances [label="Saved Game Instances"];
+	  }
+	  
+	  subgraph {
+	  	rank = same
+	  	static_assets [label="Assets"];
+		static_scene [label="Map / Scene Data"];
+		static_defs [label="Definitions"];
+	  }
+	  
+
+
+	  saved_game -> collective_data;
+	  user_content -> collective_data;
+	  saved_instances -> collective_data;
+
+	  static_assets -> static_resources;
+	  static_scene -> static_resources;
+	  static_defs -> static_resources;
+
+	  collective_data -> engine_central_storage;
+	  static_configs -> engine_central_storage;
+	  static_resources -> engine_central_storage;
+  }
+
+  subgraph engine_core {
+	  engine_central [label="Game Engine", shape=box];
+	  subgraph engine_core_parts {
+	  	rank = same
+	  	engine_central_data [label="Data", shape=doubleoctagon];
+		engine_central_storage [label="Storage", shape=doubleoctagon];
+		engine_central_network [label="Network", shape=doubleoctagon];
+		engine_central_features [label="Features", shape=doubleoctagon];
+	  }
+	  
+
+	  engine_central -> engine_central_storage;
+	  engine_central -> engine_central_data;
+	  engine_central -> engine_central_network;
+	  engine_central -> engine_central_features;
+
+  }
+  subgraph game_instances {
+  	  rank = same
+  	  local_game [label="Local Game", shape=box];
+  	  remote_games [label="Remote Game Engines", shape=box];
+  }
+  engine_central_network -> local_game [label="127.0.0.1:58000"];
+  local_game -> engine_central_network [label="127.0.0.1:59000\l127.0.0.1:59100"];
+  remote_games -> engine_central_network [label="127.0.0.1:59100"];
+
+
+  subgraph engine_data {
+  		subgraph engine_managers {
+  			rank = same
+  			entity_manager [label="Entity Manager", shape=house];
+		  	property_manager [label="Property Manager", shape=house];
+		  	attribute_manager [label="Attribute Manager", shape=house];
+  		}
+  	  
+
+  	  entity_pool [label="Entity ID Pool", shape=folder];
+  	  entity_entities [label="Entities", shape=parallelogram];
+	subgraph {
+		pack = true
+	  	  entity_pool_local [label="Local Allocation", shape=parallelogram];
+	  	  entity_pool_global_shared [label="Global Game-Shared", shape=parallelogram];
+	  	  entity_pool_global_request [label="Global Game-Request", shape=parallelogram];
+	  	  entity_pool_global_meta [label="Global Game-Meta", shape=parallelogram];
+	  	  subgraph {
+	  	  	edge [style=invis]
+	  	  	entity_pool_local -> entity_pool_global_shared -> entity_pool_global_request -> entity_pool_global_meta;
+	  	  }
+  	  }
+
+  	  entity_pool -> entity_pool_local;
+  	  entity_pool -> entity_pool_global_meta;
+  	  entity_pool -> entity_pool_global_request;
+  	  entity_pool -> entity_pool_global_shared;
+
+  	  
+
+  	  entity_manager -> entity_pool;
+  	  entity_manager -> entity_entities;
+
+  	  property_properties [label="Properties", shape=parallelogram];
+  	  property_attribute_mediator [label="Attribute Contract Mediator", shape=house];
+
+  	  entity_entities -> property_properties;
+  	  property_properties -> property_attribute_mediator;
+  	  property_properties -> entity_entities [label="By ID"];
+
+  	  property_manager -> property_properties;
+  	  property_manager -> property_attribute_mediator;
+
+  	  attribute_promises [label="Attribute Promises", shape=parallelogram];
+  	  attribute_pool [label="Attribute Pool", shape=folder];
+  	  attribute_attributes [label="Attributes", shape=parallelogram];
+
+  	  attribute_pool -> attribute_attributes;
+  	  entity_entities -> attribute_promises;
+
+  	  attribute_manager -> attribute_promises;
+  	  attribute_manager -> attribute_pool;
+
+  	  engine_central_data -> attribute_manager;
+  	  engine_central_data -> property_manager;
+  	  engine_central_data -> entity_manager;
+
+  }
+  subgraph engine_features {
+  	engine_feature_registrar [label="Engine Feature Registrar", shape=house];
+  	arbitrary_feature [label="Arbitrary Engine Feature",shape=folder];
+  	arbitrary_subsystem [label="Subsystem",shape=box3d];
+  	arbitrary_component [label="Components",shape=component];
+  	arbitrary_component_properties [label="Listening Properties",shape=note];
+  	arbitrary_component_property_attributes [label="Contracted Attributes and Defaults", shape=signature];
+
+  	engine_feature_property_register [label="Property Register", shape=house];
+
+
+  	arbitrary_feature -> engine_feature_registrar;
+  	arbitrary_feature -> arbitrary_subsystem;
+  	arbitrary_feature -> arbitrary_component;
+  	arbitrary_component -> arbitrary_component_properties;
+  	arbitrary_component_properties -> arbitrary_component_property_attributes;
+  	arbitrary_component_properties -> engine_feature_property_register;
+
+  	engine_feature_property_register -> property_manager;
+
+  	engine_central_features -> engine_feature_registrar;
+  }
+
+
+}

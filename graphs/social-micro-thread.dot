@@ -1,0 +1,26 @@
+digraph social_micro_thread {
+	User_1;
+	User_2;
+	User_3;
+	User_Status;
+
+	subgraph cluster_a {
+		edge[style=invis]
+		Comment_1 -> Comment_2 -> Comment_3;
+	}
+	User_1 -> User_Status [dir="both"];
+	subgraph {
+		edge[color="red" dir="both"]
+		User_Status -> Comment_1;
+		User_Status -> Comment_2;
+		User_Status -> Comment_3;
+	}
+	
+	subgraph {
+		edge[color="purple" dir="both"]
+		User_2 -> Comment_1;
+		User_3 -> Comment_2;
+		User_1 -> Comment_3;
+	}
+	
+}

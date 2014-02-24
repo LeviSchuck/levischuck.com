@@ -1,0 +1,4 @@
+digraph entity_custom_table {
+	node [shape=record]
+	ctable [label="Entity ID|Attribute 1|Attribute 2|...|Attribute n"];
+}

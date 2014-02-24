@@ -1,0 +1,27 @@
+digraph event1 {
+    det[label="Determine Channels to broadcast to"];
+    det2[label="Determine Partitions to broadcast to"]
+    "Event In" -> det;
+    "Event In" -> det2;
+    "Event In" -> construct;
+    construct[label="Construct (:partition, :channel, :event_data) tuples"];
+    det -> construct;
+    det2 -> construct;
+
+    forward1[label="Send Tuple to relevant Partition"];
+    forward2[label="Send data to relevant Channel"]
+    construct -> forward1 -> forward2;
+
+    det3[label="Lookup active clientid's for this Channel"]
+    det4[label="Lookup sequences known not to expire in 5 seconds"]
+    forward2 -> det3 -> det4;
+
+    construct2[label="Construct (:channel, :clientid, :seq, :data) tuples"]
+    forward2 -> construct2;
+    det3 -> construct2;
+    det4 -> construct2;
+    sendy[label="Send tuple over the active connection for\n(:channel, :clientid, :seq)"];
+    construct2 -> sendy;
+    sendy -> "Client receives {\"t\":\"msg\"...}";
+
+}

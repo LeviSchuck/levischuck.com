@@ -1,0 +1,27 @@
+digraph property {
+	Property [label="Property[name]"];
+	Property -> name;
+	Property -> contract;
+	Property -> sets;
+	sets [label="Referencing Sets"];
+	contract [label="Contract"];
+	contract -> attr_name;
+	contract -> attr_type;
+	contract -> attr_default;
+	subgraph cluster_0 {
+		attr_name;
+		attr_type;
+		attr_default;
+	}
+
+	attr_name [label="Attribute Name"];
+	attr_type [label="Type"];
+	attr_default [label="Default Value"];
+
+	sets -> Prop_Set_1;
+	sets -> Prop_Set_x;
+	sets -> Prop_Set_n;
+	Prop_Set_x [label="Prop_Set_..."];
+
+
+}

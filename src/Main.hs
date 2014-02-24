@@ -48,7 +48,7 @@ main = hakyll $ do
             >>= loadAndApplyTemplate "templates/default.html" defContext
             >>= relativizeUrls
 
-    let kinds = ["post", "project", "concept"]
+    let kinds = ["post", "project", "concept", "page"]
     forM_ kinds $ \k -> do
         match (fromGlob $ k ++ "s/*") $ postLike k
 

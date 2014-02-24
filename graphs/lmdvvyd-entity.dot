@@ -1,0 +1,23 @@
+digraph entity {
+	Entities[label="Entity(entity ID)"];
+	Entities -> key;
+	key [label="key: entity ID"];
+	properties;
+	attributes;
+	Entities -> properties;
+	Entities -> attributes;
+	properties -> prop_1;
+	properties -> prop_x;
+	properties -> prop_n;
+	prop_x [label="prop_..."];
+	attributes -> attr_1;
+	attributes -> attr_x;
+	attributes -> attr_n;
+	attr_x [label="attr_...."];
+	attr_1 -> name;
+	attr_1 -> value;
+	subgraph cluster_0 {
+		name;
+		value;
+	}
+}

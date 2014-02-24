@@ -1,0 +1,36 @@
+digraph social_forum {
+	subgraph Users {
+		User_1;
+		User_2;
+	}
+	Forum -> Section_1;
+	Forum -> Section_2;
+	subgraph Sections {
+		edge[color="red"]
+		Section_1;
+		Section_2;
+		Section_1 -> Section_1_1;
+	}
+	subgraph Threads {
+		edge[color="blue"]
+		Section_1 -> Thread_1;
+		Section_2 -> Thread_2;
+		Section_1_1 -> Thread_3;
+		User_1 -> Thread_1;
+		User_2 -> Thread_3;
+		User_1 -> Thread_2;
+	}
+	subgraph ThreadPosts {
+		edge[color="green"]
+		Thread_1 -> Post_1;
+		Thread_1 -> Post_2;
+		Thread_3 -> Post_3;
+	}
+	subgraph Posts {
+		edge[color="purple"]
+		Post_1 -> User_1;
+		Post_2 -> User_2;
+		User_1 -> User_1_Posts -> Post_1;
+		User_2 -> User_2_Posts -> Post_2;
+	}
+}

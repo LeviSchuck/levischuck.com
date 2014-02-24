@@ -1,0 +1,41 @@
+digraph property_set {
+	Prop_set [label="Property Set([property])"];
+	Prop_set -> key;
+	Prop_set -> value;
+	key [label="key: set of properties"];
+	
+	contract [label="Cached Contract"];
+	attributes [label="Attribute Properties(Attribute Name)"];
+	entities [label="Entities(Entity ID)"];
+	properties [label="Composing Properties[property]"];
+	value -> contract;
+	value -> attributes;
+	value -> entities;
+	value -> properties;
+	
+	subgraph cluster_1 {
+		attr_name [label="Attribute Name"];
+		attr_type [label="Type"];
+		attr_default [label="Default"];
+	}
+	contract -> attr_name;
+	contract -> attr_type;
+	contract -> attr_default;
+
+	contract -> Property_1;
+	contract -> Property_x;
+	contract -> Property_n;
+	Property_x [label="Property_..."];
+
+	Property_1 -> Property_1_contract;
+	Property_1_contract [label="Arbitrary Contract"];
+
+	attributes -> attr_key;
+	attributes -> attr_value;
+	attr_key [label="Attribute Name"];
+	attr_value [label="Owning Properties[property]"];
+	subgraph cluster_2 {
+		attr_key;
+		attr_value;
+	}
+}

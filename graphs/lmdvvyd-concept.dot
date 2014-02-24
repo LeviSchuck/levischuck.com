@@ -1,0 +1,138 @@
+digraph d {
+	subgraph {
+	root;
+	Entities;
+	Properties [label="Property Contracts"];
+	PropertySets [label="Property Sets"];
+	}
+	
+
+	subgraph ents {
+		Entity_1;
+		Entity_2;
+		Entity_3;
+		Entity_w [label="Entity_..."];
+		Entity_x [label="Entity_..."];
+		Entity_n;
+		Entity_y [label="Entity_..."];
+		Entity_z [label="Entity_..."];
+	}
+	subgraph props {
+		Property_1;
+		Property_2;
+		Property_3;
+		Property_w [label="Property_..."];
+		Property_x [label="Property_..."];
+		Property_n;
+		Property_y [label="Property_..."];
+		Property_z [label="Property_..."];
+	}
+	subgraph props2 {
+		PropertySet_1;
+		PropertySet_2;
+		PropertySet_3;
+	}
+
+	root -> Entities;
+	root -> Properties;
+	root -> PropertySets;
+
+	subgraph parents{
+		edge[color="purple"];
+		Entities -> Entity_1;
+		Entities ->	Entity_2;
+		Entities ->	Entity_3;
+		Entities ->	Entity_w;
+		Entities ->	Entity_x;
+		Entities ->	Entity_n;
+		Entities ->	Entity_y;
+		Entities ->	Entity_z;
+
+		Properties -> Property_1;
+		Properties -> Property_2;
+		Properties -> Property_3;
+		Properties -> Property_w;
+		Properties -> Property_x;
+		Properties -> Property_n;
+		Properties -> Property_y;
+		Properties -> Property_z;
+
+		PropertySets -> PropertySet_1;
+		PropertySets -> PropertySet_2;
+		PropertySets -> PropertySet_3;
+	}
+
+	
+
+	subgraph prop_edges {
+		edge[dir="both" color="green:blue"];
+		PropertySet_1 -> Property_1;
+		PropertySet_1 -> Property_3;
+
+		PropertySet_2 -> Property_1;
+		PropertySet_2 -> Property_x;
+		PropertySet_2 -> Property_3;
+
+		PropertySet_3 -> Property_n;
+		PropertySet_3 -> Property_z;
+		PropertySet_3 -> Property_y;
+		PropertySet_3 -> Property_2;
+		PropertySet_3 -> Property_w;
+	}
+	subgraph prop_edges2 {
+		edge[color="orange"];
+		PropertySet_1 -> Entity_w;
+		PropertySet_1 -> Entity_y;
+		PropertySet_2 -> Entity_3;
+		PropertySet_2 -> Entity_z;
+
+		PropertySet_3 -> Entity_1;
+		PropertySet_3 -> Entity_2;
+		PropertySet_3 -> Entity_3;
+		PropertySet_3 -> Entity_z;
+	}
+	
+
+
+	subgraph ent_edges {
+		edge[color="red"];
+
+
+	Entity_w -> Property_1;
+	Entity_w -> Property_3;
+	Entity_y -> Property_1;
+	Entity_y -> Property_3;
+
+	Entity_1 -> Property_n;
+	Entity_1 -> Property_z;
+	Entity_1 -> Property_y;
+	Entity_1 -> Property_2;
+	Entity_1 -> Property_w;
+
+	Entity_2 -> Property_n;
+	Entity_2 -> Property_z;
+	Entity_2 -> Property_y;
+	Entity_2 -> Property_2;
+	Entity_2 -> Property_w;
+
+	Entity_3 -> Property_n;
+	Entity_3 -> Property_z;
+	Entity_3 -> Property_y;
+	Entity_3 -> Property_2;
+	Entity_3 -> Property_w;
+	Entity_3 -> Property_1;
+	Entity_3 -> Property_x;
+	Entity_3 -> Property_3;
+
+	Entity_z -> Property_n;
+	Entity_z -> Property_z;
+	Entity_z -> Property_y;
+	Entity_z -> Property_2;
+	Entity_z -> Property_w;
+	Entity_z -> Property_1;
+	Entity_z -> Property_x;
+	Entity_z -> Property_3;
+
+	}
+
+}

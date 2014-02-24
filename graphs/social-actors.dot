@@ -1,0 +1,14 @@
+digraph social_actors {
+	/*ranksep=3.0; nodesep=2.0;*/
+	subgraph Posts {
+		edge[color="red"]
+		Actor_1_1 -> Actor_1_1_Posts;
+		Actor_1_1_Posts -> Actor_1_1_Post_Entry_1;
+	}
+
+	subgraph Feed {
+		Actor_2_2 -> Actor_2_2_Feed;
+		Actor_2_2_Feed -> Actor_2_2_Feed_Block_1;
+		Actor_2_2_Feed_Block_1 -> Actor_1_1_Post_Entry_1;
+	}
+}

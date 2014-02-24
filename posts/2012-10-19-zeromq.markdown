@@ -1,0 +1,40 @@
+---
+layout: post
+title: ZeroMQ
+date: 2012-10-19 09:14
+comments: true
+categories: 
+---
+
+[ZeroMQ][], is something interesting that may be worth investing time into.
+
+I was previously looking into [Poco's offer][poco notifications] of a notification system, but this seems better since I can effectively get networking for free with it.
+
+## What does it offer?
+
+* The socket library that acts as a concurrency framework.
+* Faster than TCP, for clustered products and supercomputing.
+* Carries messages across inproc, IPC, TCP, and multicast.
+* Connect N-to-N via fanout, pubsub, pipeline, request-reply.
+* Asynch I/O for scalable multicore message-passing apps.
+* Large and active open source community.
+* 30+ languages including C, C++, Java, .NET, Python.
+* Most OSes including Linux, Windows, OS X.
+* LGPL free software with full commercial support from iMatix.
+
+<!--more-->
+## Links to observe
+
+[ZeroMQ][]
+[poco message][poco msg]
+[poco notifications][]
+[network stack][]
+[learn ruby ZeroMQ][]
+[ZeroMQ java][]
+
+[zeromq]: http://www.zeromq.org/
+[poco msg]: http://pocoproject.org/docs/Poco.Message.html
+[poco notifications]: http://pocoproject.org/slides/090-NotificationsEvents.pdf
+[network stack]: http://www.igvita.com/2010/09/03/zeromq-modern-fast-networking-stack/
+[learn ruby zeromq]: https://github.com/andrewvc/learn-ruby-zeromq
+[zeromq java]: http://fanf42.blogspot.com/2011/02/installing-zeromq-and-java-bindings-on.html

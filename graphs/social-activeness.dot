@@ -1,0 +1,30 @@
+digraph social_activeness {
+	subgraph cluster_a {
+		Anonymous_Thread;
+		User_1;
+		User_2;
+		User_3;
+	}
+	Anonymous_Thread -> Users_Active_1;
+	Anonymous_Thread -> Users_Active_2;
+	subgraph cluster_1{
+		label="12:23 July 29, 2013";
+		edge[color="purple"]
+		Users_Active_1 -> User_1;
+		Users_Active_1 -> User_2;
+		Users_Active_1 -> User_3;
+	}
+	subgraph cluster_2{
+		label="13:12 July 29, 2013";
+		edge[color="red"]
+		
+		Users_Active_2 -> User_1;
+		Users_Active_2 -> User_3;
+	}
+	subgraph cluster_3{
+		label="13:12 July 29, 2013";
+		edge[color="green"]
+		User_2 -> Users_Active_1 [label="Notifies future absence."];
+		Users_Active_1 -> Users_Active_2;
+	}
+}

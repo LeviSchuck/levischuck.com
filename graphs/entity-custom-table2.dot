@@ -1,0 +1,23 @@
+digraph entity_custom_table {
+	subgraph cluster_views{
+		label="Views"
+		vB07B9BFA [label="ApplesBananas"];
+		v1 [label="Apples"];
+		v2 [label="Cheese"];
+	}
+	subgraph cluster_tables {
+		label="Tables"
+		x56A8B8DB [label="ApplesBananasCheese"];
+		1 [label="ApplesBananasPumpkins"];
+		2 [label="ApplesBananasBurgersPumkins"];
+		3 [label="ApplesCheese"];
+	}
+	vB07B9BFA -> x56A8B8DB;
+	vB07B9BFA -> 1;
+	vB07B9BFA -> 2;
+	v1 -> 1;
+	v1 -> 2;
+	v1 -> 3;
+	v1 -> x56A8B8DB;
+	v2 -> 3;
+}

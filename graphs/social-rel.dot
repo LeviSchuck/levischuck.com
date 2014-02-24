@@ -1,0 +1,24 @@
+digraph social_rel {
+	ranksep=3.0; nodesep=2.0;
+	layout=twopi;
+	/*Server;
+	Server -> Users;*/
+	subgraph cluster_Users {
+		Users -> User_1;
+		Users -> User_2;
+		User_1 -> User_2 [label="OOC or Full Relation" dir="both" color="green:blue"];
+		subgraph UserActors {
+			edge[color="red" dir="both"]
+			User_1 -> Actor_1_1;
+			User_1 -> Actor_1_2;
+			User_2 -> Actor_2_1;
+			User_2 -> Actor_2_2;
+		}
+	}
+
+	subgraph UserRelations {
+		edge[dir="both" color="green:blue"];
+		Actor_1_1 -> Actor_2_2 [label="Friend"];
+		Actor_1_2 -> Actor_2_1 [label="Family Relation\nAlso friend"];
+	}
+}

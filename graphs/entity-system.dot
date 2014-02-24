@@ -1,0 +1,34 @@
+digraph entity_system{
+	subgraph cluster_data{
+		label="Data"
+		Entities;
+		Properties;
+		Attributes;
+		Entities -> Properties;
+		Entities -> Attributes;
+		Properties -> Entities;
+		
+	}
+	subgraph cluster_code {
+		label="Codebase"
+		Components;
+		Systems;
+		Libraries
+		Assistants;
+		Wrappers;
+		Systems -> Libraries;
+		Systems -> Assistants;
+		Systems -> Wrappers;
+		Systems -> Components;
+		Components -> Systems;
+		Property_Contracts [label="Property Contracts"];
+		Attribute_Definitions [label="Attribute Contracts"];
+		Property_Contracts -> Attribute_Definitions;
+		Components -> Property_Contracts;
+		Property_Contracts -> Properties;
+
+	}
+	Components -> Entities;
+	Components -> Attributes;
+	Components -> Properties;
+}

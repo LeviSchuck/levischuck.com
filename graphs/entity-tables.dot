@@ -1,0 +1,22 @@
+digraph entity_tables {
+	node [shape=record]
+	subgraph cluster_0{
+		label="Raw Types";
+		Property [label="Properties:|<name>Name"];
+		Entity [label="Entities:|<id>ID"];
+		Attributes [label="Attributes:|<id>ID|<name>Name|<type>Type|<rc>Reference Count"];
+	}
+	subgraph cluster_1{
+		label="Instances"
+		Entity_Properties [label="Entity Properties:|<id>ID|<pname>Property Name"];
+		Entity_Attributes [label="Entity Attributes:|<id>ID|<attr>Attribute ID"];
+		Property_Contracts [label="Property Contracts:|<pname>Name|<attr>Attribute Name|<type>Type"];
+	}
+	Entity_Properties:id -> Entity:id;
+	Entity_Properties:pname -> Property:name;
+	Entity_Attributes:id -> Entity:id;
+	Entity_Attributes:attr -> Attributes:id;
+	Property_Contracts:pname -> Property:name;
+	Property_Contracts:attr -> Attributes:name;
+	
+}

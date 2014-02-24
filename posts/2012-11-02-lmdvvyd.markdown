@@ -1,0 +1,116 @@
+---
+layout: post
+title: LMDVVYD, a Union-Schema contracting database Part 1
+date: 2012-11-02 09:39
+comments: true
+categories: Insane
+mathjax: true
+---
+
+LMDVVYD, pronounced "Lamed Vav Yod", is name I give to the database concept I've been working on for the last while.
+
+It's been weighing on my mind heavily for the last several weeks, more than game programming, which I really need to get back to some time soon and make progress.
+
+I've already previously gave a description for a [RDBMS][] implementation in a preceding post.
+
+I've planned also a NoSQL implementation, which I won't implement until it becomes _interesting_ or _necessary_ for whatever cases I plan to use LMDVVYD for. It's similar to an in-memory design, and uses a [MapReduce][] operation with pivot information. 
+
+My plan however is to create an in-memory version, which only supports [CRUD][] operations.
+Eventually Querying might be supported.
+
+<!--more-->
+
+## Property
+
+Because Entities are contracted to a union of properties, there will be a separation of Properties and Property Sets, where Property Sets (except the zero set) have a size of one or more.
+
+So, the **Property** data structure will only hold the contracts, and those contracted with.
+
+Here's how it's designed:
+
+Property contracts are mapped from a string name to an object which contains
+
+* Name
+* Contract
+* Contracted _Referencing Sets_
+
+Where Contract is a BSON Object template, containing Names, and defaults, where the default also doubles as what type.
+
+Where Contracted is defined as an array of property sets, which in of themselves are arrays of strings.
+
+![][property]
+
+## Property Sets
+There is at least as many Property Sets as there are properties. An Empty Property set will always exist, since that's where entities which exist, but have no properties _or attributes_ exist.
+All _User-defined_ properties have their own instance of a Property set, where the key is just an array of one property name.
+All combinations of properties are instantiated **on demand**, for to create a powerset, being 2 to the power of the count of all properties.
+
+$\begin{equation}
+	2^{\parallel Properties \parallel}
+	\end{equation}$
+
+This could be rather costly, not to mention, it wouldn't help. There are nonsensical things I like to joke about, like combining a vehicle, and a car. That makes sense, right? Now combine it with a fridge.
+This will probably work fine if the contracts didn't conflict, but when they do conflict what happens? Well, an exception or status code is made that essentially states that constructing something with a set of specific properties is impossible, and part of the message going back to the client is _Well, your attempt didn't work out so well.._ as a status code. 
+
+Supposing we are using the [HTTP Status Codes][], we might use a 400 Error, _Bad Request_, which it is. 
+This will happen when there's a conflict of contracts that are unioned, suppose there's an attribute called _coordinates_, one contract specifies that this is an array of ints. Another contract specifies that this is an array of floats. All code that expects the object to return ints might have undefined behavior if we overwrote the contract type a string and vice versa.
+
+Having duplicate fields with mangled names to resolve conflicts would defeat the purpose of the union, where one contract can alter data shared with another contract. What would you do when you try to select the two contracts at the same time that have conflicting types for the same name?
+What does the client expect? The database does not know! 
+
+It would be better to say that the request is bad or invalid, than to fail later because of a very tiny test case, that is, stop the problem before it saves and cascades.
+
+That means that any component that listens to this particular combination, or containing this combination for what it listens to, will never actually process anything. That should be a sign that there's a design error or mistake **somewhere**.
+The database may log this, but the response will definitely require some pattern matching on the user's part to verify that things went **200 OK**. Otherwise the client should recognize it as bad, and log it either as a high level warning or fatal error.
+
+Since the property set of entities can change at any time, adding properties will augment the data and add the entity ID to **every subset** of the old property unioned with the new property. Removing properties is a little more costly, where the entity ID will need to be removed from **every subset** of the new property set, unioned with the removed property. The extra cost comes from removal. Hopefully hash sets will ease this. 
+> Note: As I'm looking at the [high-scale-lib][] made by Cliff Click, his hash set is just his non blocking hash map where the key is the element, and the value is a final object set to the empty string.
+
+The preconditions of adding formally being: During the construction process of a property set, there exists the definitions of property contracts. The intersection of the contracts by name, for all, the types must be the same.
+
+One thing to note, when merging, and instantiating defaults, assume the default is not deterministic for intersecting contracts. 
+
+Now that we have _how many_ and _how they come to existence_ out of the way, here's how things are actually laid out.
+
+There exists a mapping of a set of property names, or an array of sorted property names, which values are an object which has:
+
+* Cached Contract
+* Attribute Properties
+* Entity References
+* Properties
+
+Where Properties is a copy of the actual properties being used, since the key may be in of itself a hash.
+
+Entity references are an array of entity IDs.
+
+Attribute Properties are a map of attributes to a set of source properties they came from. Attributes that come from a single property will only have one entry, whilst shared attributes will have more than one property listed. This is used to determine which channels to send changes on.
+
+A _Cached Contract_ is a BSON constructed from a union of all related property BSON objects, the defaults being nondeterministic between the sets.
+
+[![][prop-set]][prop-set]
+
+## Entities
+
+This is actually the most simple component.
+
+Entities are a map of Entity IDs, _which the database is agnostic to_, to values which are a set of properties, and for attributes: a BSON instance of keys and values.
+
+![][entity]
+
+----
+
+I plan to make a follow up post, for LMDVVYD for how the following are defined
+
+* Logical layout of the server
+* How commands are constructed
+* Return Format
+* Events
+
+[RDBMS]: http://en.wikipedia.org/wiki/Relational_database_management_system "Relational Database Management System"
+[CRUD]: http://en.wikipedia.org/wiki/Create,_read,_update_and_delete "Create, Read, Update, Delete"
+[MapReduce]: http://en.wikipedia.org/wiki/MapReduce
+[HTTP Status Codes]: http://en.wikipedia.org/wiki/List_of_HTTP_status_codes
+[high-scale-lib]: https://github.com/stephenc/high-scale-lib/
+[prop-set]: /graphs/lmdvvyd-property-set.svg
+[property]: /graphs/lmdvvyd-property.svg
+[entity]: /graphs/lmdvvyd-entity.svg

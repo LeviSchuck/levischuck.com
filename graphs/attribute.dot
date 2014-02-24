@@ -1,0 +1,7 @@
+digraph attribute {
+	Attribute -> Key;
+	Attribute -> Value;
+	Attribute -> Type;
+	Attribute -> Ref;
+	Ref [label="Reference Count"];
+}

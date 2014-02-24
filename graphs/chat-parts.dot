@@ -1,0 +1,21 @@
+digraph parts {
+	rankdir=TB;
+	subgraph cluster_front {
+		label="front";
+		subgraph cluster_oo {
+			label="One on One";
+			send_msg1 [label="Send Message"];
+			list_open1 [label="List Open"];
+		}
+		subgraph cluster_contacts {
+			label="Contacts";
+			list_all1 [label="List All"];
+			list_online1 [label="List Online"];
+		}
+		subgraph cluster_g {
+			label="Group";
+			list_all2 [label="List Public"];
+			list_open2 [label="List open groups"];
+		}
+	}
+}

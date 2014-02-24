@@ -1,0 +1,10 @@
+digraph entity {
+	Entity -> Properties
+	Entity -> Attributes
+	subgraph {
+		rank=same
+		Entity;
+		ID;
+		Entity -> ID;
+	}
+}

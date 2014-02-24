@@ -1,0 +1,13 @@
+digraph property_contract {
+	subgraph {
+		rank=same;
+		Property [label="Property Contract"];
+		name;
+		Property -> name;
+	}
+	Property -> Attributes;
+	Attributes [label="Attribute Contracts"];
+	Attributes -> Type;
+	Attributes -> Default;
+	Default [label="Default Value"];
+}

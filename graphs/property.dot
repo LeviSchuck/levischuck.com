@@ -1,0 +1,9 @@
+digraph property {
+	Property -> Entities;
+	subgraph {
+		rank=same;
+		Property;
+		name;
+		Property -> name;
+	}
+}
