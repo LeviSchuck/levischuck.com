@@ -11,10 +11,15 @@ defContext =
     mathCtx
     `mappend`  defaultContext
 
+recentPostCount :: Int
+recentPostCount = 5
 
 main :: IO ()
 main = hakyll $ do
     match "images/*" $ do
+        route   idRoute
+        compile copyFileCompiler
+    match "images/*/*" $ do
         route   idRoute
         compile copyFileCompiler
 
@@ -76,7 +81,7 @@ main = hakyll $ do
             posts <- recentFirst =<< loadAll "posts/*"
             projects <- loadAll "projects/*"
             let indexCtx =
-                    listField "posts" postCtx (return posts) `mappend`
+                    listField "posts" postCtx (return (take recentPostCount posts)) `mappend`
                     listField "projects" postCtx (return projects) `mappend`
                     constField "title" "Home"                `mappend`
                     defContext
