@@ -25,6 +25,7 @@ known is [MySQL](http://www.mysql.com/).
 + [CoreOS](http://coreos.com) The container operating system/layer for Docker. Made in Go.
 + [dweet](http://dweet.io) A tweet-like event service for the internet of things. 
 + [Algolia Search As A Service](http://www.algolia.com/features) A search-as-you-type service with fast response times.
++ [Swift Project](http://swirl-project.org/) Bringing Peer to Peer streaming to the world
 
 # Languages of Interest
 
