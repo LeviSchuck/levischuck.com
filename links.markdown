@@ -25,7 +25,6 @@ known is [MySQL](http://www.mysql.com/).
 + [CoreOS](http://coreos.com) The container operating system/layer for Docker. Made in Go.
 + [dweet](http://dweet.io) A tweet-like event service for the internet of things. 
 + [Algolia Search As A Service](http://www.algolia.com/features) A search-as-you-type service with fast response times.
-+ [Swift Project](http://swirl-project.org/) Bringing Peer to Peer streaming to the world
 
 # Languages of Interest
 
@@ -91,6 +90,7 @@ known is [MySQL](http://www.mysql.com/).
 + [Docker Base Images](http://phusion.github.io/baseimage-docker/) How you are probably doing docker wrong, and how you can do better.
 + [Regex Routing](http://nikic.github.io/2014/02/18/Fast-request-routing-using-regular-expressions.html) Rather than do a sequence of individual regexes, why not try to combine them? Invalid URLs can be determined much quicker.
 + [Flow Based Programming Concept](http://www.fastcolabs.com/3016289/how-an-arcane-coding-method-from-1970s-banking-software-could-save-the-sanity-of-web-develop) Although developed early on, this technique fell out of favor when it came to writing assembly for Von-Neumann machines. These days, it is significantly relevant, visual and audio effects artists use it, why not us?
++ [Users don't hate change](https://medium.com/design-startups/461772fbcac7) They hate what they percieve to not benefit them.
 
 
 # Javascript Libraries
