@@ -59,6 +59,7 @@ known is [MySQL](http://www.mysql.com/).
 + [The If Works](http://blog.jcoglan.com) Guy behind Faye, does Ruby and Node.js
 + [Aphyr](http://aphyr.com/) with his "Call me maybe" distributed services series
 + [Noel](http://noelwelsh.com) He does web services with Scala and has an emphasis on functional approaches for distributed systems
++ [Alvaro Videla](http://videlalvaro.github.io/) Erlang enthusist, author of RabbitMQ in Action
 
 # Exciting front end projects
 
