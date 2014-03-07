@@ -93,6 +93,7 @@ known is [MySQL](http://www.mysql.com/).
 + [Regex Routing](http://nikic.github.io/2014/02/18/Fast-request-routing-using-regular-expressions.html) Rather than do a sequence of individual regexes, why not try to combine them? Invalid URLs can be determined much quicker.
 + [Flow Based Programming Concept](http://www.fastcolabs.com/3016289/how-an-arcane-coding-method-from-1970s-banking-software-could-save-the-sanity-of-web-develop) Although developed early on, this technique fell out of favor when it came to writing assembly for Von-Neumann machines. These days, it is significantly relevant, visual and audio effects artists use it, why not us?
 + [Users don't hate change](https://medium.com/design-startups/461772fbcac7) They hate what they percieve to not benefit them.
++ [C++ The Good Parts](http://www.infoq.com/presentations/c-plus-plus-pros) With plenty of mentions of Haskell, Jordan DeLong from Facebook talks about C++14 easing compile time functional concepts.
 
 
 # Javascript Libraries
