@@ -9,6 +9,7 @@ import           Control.Monad
 defContext :: Context String
 defContext =
     mathCtx
+    `mappend` tweetCtx
     `mappend`  defaultContext
 
 recentPostCount :: Int
@@ -33,6 +34,9 @@ main = hakyll $ do
     match "graphs/*.dot" $ do
         route   $ setExtension "svg"
         compile $ getResourceString >>= withItemBody (unixFilter "dot" ["-Tsvg"])
+    match "graphs/*.dot" $ do
+        route   $ setExtension "png"
+        compile $ getResourceString >>= withItemBody (unixFilter "dot" ["-Tpng"])
 
     match (fromList ["contact.markdown", "links.markdown"]) $ do
         route   $ setExtension "html"
@@ -98,7 +102,6 @@ main = hakyll $ do
 postCtx :: Context String
 postCtx =
     dateField "date" "%B %e, %Y" `mappend`
-    mathCtx `mappend`
     defaultContext
 
 
@@ -112,3 +115,9 @@ mathCtx = field "mathjax" $ \item -> do
     return $ if "mathjax" `M.member` metadata
                   then "<script type=\"text/javascript\" src=\"http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML\"></script>"
                   else ""
+tweetCtx :: Context a
+tweetCtx = field "tweets" $ \item -> do
+    metadata <- getMetadata $ itemIdentifier item
+    return $ if M.member "tweets" metadata
+        then "<script async src=\"//platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>"
+        else ""

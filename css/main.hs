@@ -1,8 +1,12 @@
 {-# LANGUAGE OverloadedStrings #-}
 import           Clay
+import           Clay.Pseudo
 import qualified Data.Text.Lazy.IO as T
 import           Data.Monoid
 import           Control.Monad
+
+mylastChild :: Refinement
+mylastChild = ":last-child"
 
 main :: IO ()
 main = T.putStr $ renderWith compact $ do
@@ -96,7 +100,7 @@ main = T.putStr $ renderWith compact $ do
         paddingTop $ em 1
         paddingBottom $ em 1
         dt ? do -- Definition Term
-            color "#3A6073"
+            color "#EBF8FF"
             float floatLeft
             fontWeight bold
             width $ em defSpace
@@ -104,4 +108,15 @@ main = T.putStr $ renderWith compact $ do
             textAlign $ alignSide sideRight
         dd ? do -- Definition Description
             marginLeft $ em $ 1 + defSpace
+            marginBottom $ em 1
+            paddingLeft $ em 0.5
+            borderLeft dashed (px 1) white
+            p ? do
+                marginLeft 0
+                paddingLeft 0
+                marginTop 0
+                marginBottom 0
+                paddingBottom 0
+        dd # mylastChild ? do
+            marginBottom 0
 
