@@ -1,0 +1,235 @@
+---
+title: What it takes to make an extensible chat API
+---
+
+Now that classes are over for the year, I am
+considering what would go into making an extensible
+chat API, over [HTTP][], [WebSockets][], and so on, with
+varying formats, like [JSON][], [XML][], [BSON][], [MsgPack][], even
+the recent [CBOR][]. 
+
+So, first off, let's define a few things.
+
+## Definitions
+
+Chat
+:   An exchange with two or more entities.
+
+Extensible
+:   The protocol can add new features without
+    breaking older using applications.
+    *(Assuming that they have a default case.)*
+
+API
+:   The standard by which applications communicate
+    with for supporting a chat application.
+
+## Discussion
+
+Now, there's plenty of other things out there,
+why not use XMPP? Why not mirror this or that?
+
+First, I want to discover what it takes, rather
+than refer to an RFC or try to reverse engineer
+a protocol like Skype.
+
+In my opinion, Skype has the best *outward*
+implementation of what it means to be a chat
+application. Though.. it is clear that there
+is some serious and significant dead weight
+considering that all the mobile applications
+constantly run out of memory, and the desktop
+version utilizes an unnecessary amount of
+computation time.
+
+This brings up our **first concern**: minimizing
+dead weight in the protocol as it grows.
+
+Aside from that concern, what makes it the best
+(in my opinion,) outward implementation?
+
+* Skype lets you message people even when the
+    connection sucks as all get-out.
+* Skype supports sending text, attachments,
+    streaming video or audio.
+* Other entities can be added arbitrarily
+    without disrupting the existing conversation.
+* Past messages can be edited or redacted
+* Clients that represent the same entity can
+    connect from multiple places simultaneously
+    and each will synchronize the current and
+    past state to a certain parameter or degree
+    with other clients.
+* Each message is signed, but can be provided
+    by another client after the fact such as
+    in the case of synchronizing state.
+
+While writing this list, another issue came
+to mind. When a client had been synchronized
+in the past, the far past, and then is
+synchronized again, it will try to request
+and fill all the information it has missed
+between synchronizations.
+While new clients just request within the
+last degree or parameter for the application.
+
+This makes getting started after a 6 month
+shutdown difficult.
+
+Thus, the **second concern**: partial
+synchronization should be acceptable.
+*Though, this is mostly up to the application,
+rather than the API.*
+
+## Protocol ideas
+
+All messages are considered to be a sum-type.
+With a sum-type, we can add other types as
+long as we label the type.
+For example, an event can be a `Message`, but
+another be a `EntityJoined` event. 
+
+### Unsupported Events
+
+The next question is.. what if the client is
+an older version and or does not support that
+type? What do we tell the human behind the entity?
+
+Saying "*EntityWeirdProgrammerName event not
+supported*" is not acceptable.
+We could silently ignore that the event happened.
+Here's an idea: Consider the event to have 
+its content deferred and place the event in a queue.
+The deferred content also expires after some amount
+of time. Then ask the source
+of the event what it recommends to do.
+When the source responds with a textual response,
+such as "*{user} sent a file*".
+If the source does not respond, or gives an empty
+response, then we pretend the event never happened.
+
+### Localized Event Descriptors
+
+This brings up a **desired feature**:
+All API messages should support a means
+to describe the message generically.
+Such a description should be cached by
+the caller, since it is generic.
+
+Then comes a complication. Locale.
+All sources should support the EN*-US* locale.
+A describe request should come with something
+similar to the HTTP `Accept-Language:` header,
+where desired locales are given with a preference
+list.
+
+
+### Centralization
+
+In case you have not noticed, I never specified
+that the source is a central server. I am not
+making that assumption. Skype was initially P2P
+with some supernodes that helped facilitate things.
+They no longer do that as much.
+However, the first implementation of this likely will
+have a central server, similar to IRC or XMPP.
+
+Sources, after all, can provide messages that they
+did not sign.
+
+### Context
+
+A context for messages should always be given,
+such that the event can be received in a stateless
+fashion.
+A context would also be a sum-type, describing if it
+were in regards to...
+
+* A conversation
+* Relations or "Friends List" change
+    + Online, Offline, and such statuses.
+    + "Friend Request"
+* A control message from an authority
+
+### Authority
+
+That brings up the next topic, what is an authority?
+
+It would need to be a service with a [FQDN][]
+that can be regarded as trusted at the time
+of the application startup.
+
+#### Authority Rights
+
+An authority can request...
+
+* The client to quit or log out.
+* Issue a new signature for an entity *(such
+    as in the case of the user making a new
+    password)* that takes effect as of a specified
+    date.
+
+### Signature Verification
+
+An authority must be able to give a client
+dates or date ranges and associated keys.
+
+But if keys change due to password changes,
+then someone would be able to see if a user
+is still active by seeing if they have changed
+their password lately. How significant is this?
+How often do people change their passwords?
+I know my historic standards, but what about
+others?
+
+How can we protect this privacy, even if the
+user has no established relation with them?
+
+Let's make some rules.
+
+1. Every source event is verified before displaying
+    to the user.
+2. Every event is verified before forwarding to
+    another client.
+3. An authority server will only provide a public key
+    for a post that successfully verifies.
+
+And, as a suggested application side rule:
+
+* When a source sends a post that does not verify,
+    and the authority server does not provide a
+    public key that can verify it, then the source
+    is considered untrustworthy.
+
+I feel this covers enough to make a decent API.
+
+
+## Design Decisions
+
+Separate things into Queries and Commands.
+In other words, follow [CQS][] principles
+where most applicable.
+
+Although it is easy to conceptualize a [CRUD][]
+interface, I believe I'd like to try something
+else, since it is more about events than modifying
+data in a persistent storage.
+
+## Queries
+
+## Commands
+
+
+
+
+
+[FQDN]: http://en.wikipedia.org/wiki/Fully_qualified_domain_name "Fully Qualified Domain Name"
+[CBOR]: http://tools.ietf.org/html/rfc7049
+[msgpack]: http://msgpack.org/
+[bson]: http://bsonspec.org/
+[json]: http://www.json.org/
+[xml]: http://www.w3.org/XML/
+[http]: http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol
+[websockets]: http://en.wikipedia.org/wiki/WebSocket
+[cqs]: http://en.wikipedia.org/wiki/Command%E2%80%93query_separation
+[crud]: http://en.wikipedia.org/wiki/Create,_read,_update_and_delete
