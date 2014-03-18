@@ -61,6 +61,7 @@ known is [MySQL](http://www.mysql.com/).
 + [Noel](http://noelwelsh.com) He does web services with Scala and has an emphasis on functional approaches for distributed systems
 + [Alvaro Videla](http://videlalvaro.github.io/) Erlang enthusist, author of RabbitMQ in Action
 + [Kirill Zubovksy](http://kirillzubovsky.com/) Founder of Scoutzie, focuses on designing and user experience
++ [Brian Hauer](http://tiamat.tsotech.com/) A blog filled mostly with rants, has a 4K monitor
 
 # Exciting front end projects
 
