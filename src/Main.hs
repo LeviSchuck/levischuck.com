@@ -6,17 +6,17 @@ import qualified Data.Map as M
 import qualified Data.Set as S
 import           Control.Monad
 
-defContext :: Context String
-defContext =
-    mathCtx
-    `mappend` tweetCtx
-    `mappend`  defaultContext
-
 recentPostCount :: Int
 recentPostCount = 5
 
+myConfig :: Configuration
+myConfig = defaultConfiguration
+    { deployCommand = "rsync -avz _site/ levischuck.com:/var/www/levischuck/"
+    }
+
+
 main :: IO ()
-main = hakyll $ do
+main = hakyllWith myConfig $ do
     match "images/*" $ do
         route   idRoute
         compile copyFileCompiler
@@ -99,6 +99,13 @@ main = hakyll $ do
 
 
 --------------------------------------------------------------------------------
+
+defContext :: Context String
+defContext =
+    mathCtx
+    `mappend` tweetCtx
+    `mappend`  defaultContext
+
 postCtx :: Context String
 postCtx =
     dateField "date" "%B %e, %Y" `mappend`
