@@ -97,6 +97,7 @@ known is [MySQL](http://www.mysql.com/).
 + [C++ The Good Parts](http://www.infoq.com/presentations/c-plus-plus-pros) With plenty of mentions of Haskell, Jordan DeLong from Facebook talks about C++14 easing compile time functional concepts.
 + [Colors of the iOS App Store](http://blog.brandisty.com/brand-management-blog/colors-of-the-ios7-app-store/) Gives some insight on what the market seems to use for each category of service
 + [X86_64 Assembly](http://hackeradam17.com/2014/03/18/an-introduction-to-x86_64-assembly-language/) A quick introduction to help decypher what you see in a disassembler
++ [Algolia and client side security](http://blog.algolia.com/handle-security-realtime-search/) They show how they solve user distinction and limiting from the browser side communicating directly to Algolia's servers
 
 
 # Javascript Libraries
