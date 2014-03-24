@@ -54,16 +54,20 @@ experimental package feature in the settings.
 
 Tried...
 
-    Hackage: tasty
-    Hackage: tasty-hunit
-    Hackage: tasty-quickcheck
+```yaml
+Hackage: tasty
+Hackage: tasty-hunit
+Hackage: tasty-quickcheck
+```
 
 It complained about not finding `Test.Tasty.QuickCheck`.
 This didn't make much sense. I changed the last line
 to a manual git checkout and it seemed to function,
 though it slowed down setup time.
-    
-    Git: https://github.com/feuerbach/tasty 791cbefbf8ca531b3b27cb07809a04581d38e1c9 quickcheck
+
+```yaml
+Git: https://github.com/feuerbach/tasty 791cbefbf8ca531b3b27cb07809a04581d38e1c9 quickcheck
+```
 
 Then I was finally able to use it.
 I hope that the creator is willing to contribute
@@ -88,6 +92,27 @@ It seemed to be happy, but then Cabal threw a fit.
 Cabal wants the module to be Main though!
 You apparently can't have a `main-is: Anything.hs` but
 in `Anything.hs` not have it be `module Main where`...
+
+EDIT (2014-03-21): Thanks to Daniel Martin for pointing out that
+the FP Complete Haskell Center [provides a definition][d] available
+when running the CPP language extension.
+
+This way, the solution may trivially be
+
+```haskell
+{-# LANGUAGE CPP #-}
+
+-- imports here
+
+#ifdef FPHC
+module Test where
+#else
+module Main where
+#endif
+
+main :: IO ()
+main = -- do tests here
+```
 
 ## After much fighting between...
 
@@ -204,3 +229,4 @@ server and web development.
 [hspec]: http://hspec.github.io
 [cucumber]: http://cukes.info
 [reddit]: http://www.reddit.com/r/haskell/comments/1jr8lb/tasty_a_new_testing_framework_successor_to/
+[d]: https://www.fpcomplete.com/school/using-fphc/fp-haskell-center-tricks-and-tips/Conditional-FPHC
