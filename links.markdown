@@ -63,6 +63,7 @@ known is [MySQL](http://www.mysql.com/).
 + [Kirill Zubovksy](http://kirillzubovsky.com/) Founder of Scoutzie, focuses on designing and user experience
 + [Brian Hauer](http://tiamat.tsotech.com/) A blog filled mostly with rants, has a 4K monitor
 + [Steve Klabnik](http://blog.steveklabnik.com) A Rubyist who understands APIs
++ [Mike Amundsen](http://amundsen.com/blog/) Hypermedia enthusiast living life in lowercase
 
 # Exciting front end projects
 
@@ -100,6 +101,7 @@ known is [MySQL](http://www.mysql.com/).
 + [X86_64 Assembly](http://hackeradam17.com/2014/03/18/an-introduction-to-x86_64-assembly-language/) A quick introduction to help decypher what you see in a disassembler
 + [Algolia and client side security](http://blog.algolia.com/handle-security-realtime-search/) They show how they solve user distinction and limiting from the browser side communicating directly to Algolia's servers
 + [Coming back from the Brink](http://scott.a16z.com/2014/03/24/were-fd-its-over-coming-back-from-the-brink/) Scott Weiss's experience with events that might mean the ruin of a company (like Hotmail).
++ []( http://g.mamund.com/uber) A specification for hypermedia in the future
 
 # Javascript Libraries
 
