@@ -46,18 +46,18 @@ main = hakyllWith myConfig $ do
 
     match (fromList ["resume.markdown"]) $ do
         route   $ setExtension "html"
-        compile $ pandocCompilerWith defaultHakyllReaderOptions pandocOptions
+        compile $ pandocCompilerWith readerOptions pandocOptions
             >>= loadAndApplyTemplate "templates/res.html" defContext
             >>= relativizeUrls
 
     let postLike = \template -> do
         route $ setExtension "html"
-        compile $ pandocCompilerWith defaultHakyllReaderOptions pandocOptions
+        compile $ pandocCompilerWith readerOptions pandocOptions
             >>= loadAndApplyTemplate (fromFilePath $ "templates/" ++ template ++ ".html") postCtx
             >>= loadAndApplyTemplate "templates/default.html" defContext
             >>= relativizeUrls
 
-    let kinds = ["post", "project", "concept", "page"]
+    let kinds = ["post", "project", "concept", "page", "chat"]
     forM_ kinds $ \k -> do
         match (fromGlob $ k ++ "s/*") $ postLike k
 
@@ -111,10 +111,32 @@ postCtx =
     dateField "date" "%B %e, %Y" `mappend`
     defaultContext
 
+desiredExtensions :: S.Set Extension
+desiredExtensions = wanted -- S.union multimarkdownExtensions wanted
+    where
+        wanted = S.fromList
+            [ Ext_line_blocks
+            , Ext_autolink_bare_uris
+            , Ext_footnotes
+            -- , Ext_pipe_tables
+            -- , Ext_implicit_figures
+            -- , Ext_link_attributes
+            ]
+
+readerOptions :: ReaderOptions
+readerOptions = d { readerExtensions = re}
+    where
+        d = defaultHakyllReaderOptions
+        re = S.union (readerExtensions d) desiredExtensions
+
+
 
 pandocOptions :: WriterOptions
-pandocOptions = d { writerExtensions = S.union (writerExtensions d) multimarkdownExtensions}
-    where d = defaultHakyllWriterOptions{ writerHTMLMathMethod = MathJax "" }
+pandocOptions = d { writerExtensions = we}
+    where
+        d = defaultHakyllWriterOptions{ writerHTMLMathMethod = MathJax "" }
+        we = S.union (writerExtensions d) desiredExtensions
+
 
 mathCtx :: Context a
 mathCtx = field "mathjax" $ \item -> do
