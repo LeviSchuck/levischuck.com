@@ -99,6 +99,8 @@ main = T.putStr $ renderWith compact $ do
         color white
         paddingTop $ em 1
         paddingBottom $ em 1
+        a ? do
+          color white
         dt ? do -- Definition Term
             color "#EBF8FF"
             float floatLeft
