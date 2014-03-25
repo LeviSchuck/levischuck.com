@@ -23,7 +23,7 @@ known is [MySQL](http://www.mysql.com/).
 
 + [Docker](http://www.docker.io) "An open source project to pack, ship and run any application as a lightweight container"
 + [CoreOS](http://coreos.com) The container operating system/layer for Docker. Made in Go.
-+ [dweet](http://dweet.io) A tweet-like event service for the internet of things. 
++ [dweet](http://dweet.io) A tweet-like event service for the internet of things.
 + [Algolia Search As A Service](http://www.algolia.com/features) A search-as-you-type service with fast response times.
 
 # Languages of Interest
@@ -98,7 +98,7 @@ known is [MySQL](http://www.mysql.com/).
 + [Colors of the iOS App Store](http://blog.brandisty.com/brand-management-blog/colors-of-the-ios7-app-store/) Gives some insight on what the market seems to use for each category of service
 + [X86_64 Assembly](http://hackeradam17.com/2014/03/18/an-introduction-to-x86_64-assembly-language/) A quick introduction to help decypher what you see in a disassembler
 + [Algolia and client side security](http://blog.algolia.com/handle-security-realtime-search/) They show how they solve user distinction and limiting from the browser side communicating directly to Algolia's servers
-
++ [Coming back from the Brink](http://scott.a16z.com/2014/03/24/were-fd-its-over-coming-back-from-the-brink/) Scott Weiss's experience with events that might mean the ruin of a company (like Hotmail).
 
 # Javascript Libraries
 
