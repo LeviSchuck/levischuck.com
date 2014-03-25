@@ -18,6 +18,7 @@ known is [MySQL](http://www.mysql.com/).
 + [RocksDB](http://rocksdb.org) An embeddable persistant (with LevelDB) key-value store. Created by Facebook, released under the BSD license.
 + [Trousseau](https://github.com/oleiade/trousseau) Networked encrypted key-value database
 + [Deep DB White Paper](http://deep.is/knowledge/deepdb-white-paper/) How Deep DB uses append-only immutable data structures to provide a scalable database.
++ [FoundationDB](https://foundationdb.com) A distributed database that practically operates itself.
 
 # Server Technologies
 
