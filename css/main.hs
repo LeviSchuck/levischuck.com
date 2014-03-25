@@ -65,7 +65,7 @@ main = T.putStr $ renderWith compact $ do
         marginBottom 0
         marginLeft $ px 14
         color "#222A40"
-    (p 
+    (p
         <> "#footer"
         <> "#header"
         <> ".info"
@@ -109,6 +109,7 @@ main = T.putStr $ renderWith compact $ do
         dd ? do -- Definition Description
             marginLeft $ em $ 1 + defSpace
             marginBottom $ em 1
+            marginRight $ em 3
             paddingLeft $ em 0.5
             borderLeft dashed (px 1) white
             p ? do
@@ -119,4 +120,3 @@ main = T.putStr $ renderWith compact $ do
                 paddingBottom 0
         dd # mylastChild ? do
             marginBottom 0
-
