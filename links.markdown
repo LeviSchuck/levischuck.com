@@ -104,6 +104,7 @@ known is [MySQL](http://www.mysql.com/).
 + [Coming back from the Brink](http://scott.a16z.com/2014/03/24/were-fd-its-over-coming-back-from-the-brink/) Scott Weiss's experience with events that might mean the ruin of a company (like Hotmail).
 + [Uniform Basis for Exchanging Representations (UBER)](http://g.mamund.com/uber) A specification for hypermedia in the future
 + [Prezi got pwned](http://engineering.prezi.com/blog/2014/03/24/prezi-got-pwned-a-tale-of-responsible-disclosure/) Prezi noticed that users could download `file:///` thanks to an email
++ [Double HMAC Verification](https://www.isecpartners.com/blog/2011/february/double-hmac-verification.aspx) Foils timing attacks while being simple to implement and keeps you cryptographically agile.
 
 # Javascript Libraries
 
