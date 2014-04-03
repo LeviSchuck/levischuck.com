@@ -19,6 +19,7 @@ known is [MySQL](http://www.mysql.com/).
 + [Trousseau](https://github.com/oleiade/trousseau) Networked encrypted key-value database
 + [Deep DB White Paper](http://deep.is/knowledge/deepdb-white-paper/) How Deep DB uses append-only immutable data structures to provide a scalable database.
 + [FoundationDB](https://foundationdb.com) A distributed database that practically operates itself.
++ [KDB+](http://www.kxcommunity.com/features/) A high-performance database, now made free, with its own `q` querying / programming language.
 
 # Server Technologies
 
