@@ -25,7 +25,7 @@ I opened the door remotely and closed it again, and then he started walking once
 
 ![](/images/dehr/yelena.jpg)
 
-The second boss fight polygon-girl was more or less the same, but seemed easier. (Perhaps I was more experienced and planned to bring EMP grenades or mines)
+The second boss fight with polygon-girl was more or less the same, but seemed easier. (Perhaps I was more experienced and planned to bring EMP grenades or mines)
 After the fact, I investigated the scene and found that (if you had time) you could hack one of the key pads and open a door which could go to the top area and you could flood the chamber with poison gas.
 You could also, if you disabled the later fields or used invisibility augmentations hack a computer above that would let you turn the turrets on her (when she was visible..)
 The second boss fight had wonderful amounts of goodies you could get after the fact if you looked.
