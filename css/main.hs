@@ -9,7 +9,7 @@ mylastChild :: Refinement
 mylastChild = ":last-child"
 
 main :: IO ()
-main = T.putStr $ renderWith compact $ do
+main = T.putStr $ renderWith compact [] $ do
     let basetextcolor = color "#404040"
         secondcolor = color "#555555"
     a ? do

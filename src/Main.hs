@@ -1,10 +1,11 @@
 {-# LANGUAGE OverloadedStrings #-}
-import           Data.Monoid (mappend)
+import           Data.Monoid (mappend,mconcat)
 import           Hakyll
 import           Text.Pandoc.Options
 import qualified Data.Map as M
 import qualified Data.Set as S
 import           Control.Monad
+import            Data.String(IsString(..))
 
 recentPostCount :: Int
 recentPostCount = 5
@@ -14,19 +15,55 @@ myConfig = defaultConfiguration
     { deployCommand = "rsync -avz _site/ levischuck.com:/var/www/levischuck/"
     }
 
+kinds :: (IsString a, IsString b) => [(String, a, a, [(b, Maybe b)])]
+kinds =
+  [ ( "Posts"
+    , "post"
+    , "posts"
+    , [("/*", Nothing)]
+    )
+  , ( "Projects"
+    , "project"
+    , "projects"
+    , [ ("/*", Nothing)
+      , ("/*/*", Just "/*/index.*")
+      , ("/*/*/*", Just "/*/*/index.*")
+      ]
+    )
+  , ( "Concepts"
+    , "concept"
+    , "concepts"
+    , [ ("/*", Nothing)
+      , ("/*/*", Just "/*/index.*")
+      ]
+    )
+  , ( "Pages"
+    , "page"
+    , "pages"
+    , [ ("/*", Nothing)
+      , ("/*/*", Just "/*/index.*")
+      ]
+    )
+  , ( "Chats"
+    , "chat"
+    , "chats"
+    , [ ("/*", Nothing)
+      , ("/*/*", Just "/*/index.*")
+      ]
+    )
+  ]
+
+foldBody :: [Item String] -> Compiler (Item String)
+foldBody xs = makeItem $ concat $ map itemBody xs
 
 main :: IO ()
 main = hakyllWith myConfig $ do
-    match "images/*" $ do
+    let idCopy = do
         route   idRoute
         compile copyFileCompiler
-    match "images/*/*" $ do
-        route   idRoute
-        compile copyFileCompiler
-
-    match "css/*.css" $ do
-        route   idRoute
-        compile compressCssCompiler
+    match "images/*" idCopy
+    match "images/*/*" idCopy
+    match "css/*.css" $ idCopy
 
     match "css/*.hs" $ do
         route   $ setExtension "css"
@@ -38,17 +75,20 @@ main = hakyllWith myConfig $ do
         route   $ setExtension "png"
         compile $ getResourceString >>= withItemBody (unixFilter "dot" ["-Tpng"])
 
-    match (fromList ["contact.markdown", "links.markdown"]) $ do
-        route   $ setExtension "html"
-        compile $ pandocCompiler
-            >>= loadAndApplyTemplate "templates/default.html" defContext
-            >>= relativizeUrls
-
-    match (fromList ["resume.markdown"]) $ do
+    let htmlWith = \template -> do
         route   $ setExtension "html"
         compile $ pandocCompilerWith readerOptions pandocOptions
-            >>= loadAndApplyTemplate "templates/res.html" defContext
+            >>= loadAndApplyTemplate template defContext
             >>= relativizeUrls
+
+    match
+      (fromList ["contact.markdown", "links.markdown"])
+      (htmlWith "templates/default.html")
+
+    match
+      (fromList ["resume.markdown"])
+      (htmlWith "templates/res.html")
+
 
     let postLike = \template -> do
         route $ setExtension "html"
@@ -56,25 +96,57 @@ main = hakyllWith myConfig $ do
             >>= loadAndApplyTemplate (fromFilePath $ "templates/" ++ template ++ ".html") postCtx
             >>= loadAndApplyTemplate "templates/default.html" defContext
             >>= relativizeUrls
+    let indexLike = \template c i -> do
+        let pat = complement i .&&. c
+        route $ setExtension "html"
+        compile $ do
+          children <- loadAll pat
+          let ctx = listField "items" postCtx (return children) `mappend` postCtx
+          pandocCompilerWith readerOptions pandocOptions
+            >>= loadAndApplyTemplate (fromFilePath $ "templates/index-" ++ template ++ ".html") ctx
+            >>= loadAndApplyTemplate "templates/default.html" defContext
+            >>= relativizeUrls
 
-    let kinds = ["post", "project", "concept", "page", "chat"]
-    forM_ kinds $ \k -> do
-        match (fromGlob $ k ++ "s/*") $ postLike k
-
+    forM_ kinds $ \(_, t, ts, p) -> do
+      forM_ p $ \(pat, rep) -> do
+        let cpat = fromGlob $ ts ++ pat
+        case rep of
+          Nothing -> return ()
+          Just r -> do
+            let ipat = fromGlob $ ts ++ r
+            match ipat $ indexLike t cpat ipat
+        match cpat $ postLike t
 
     create ["archive.html"] $ do
         route idRoute
         compile $ do
-            posts <- recentFirst =<< loadAll "posts/*"
-            projects <- loadAll "projects/*"
-            let archiveCtx =
-                    listField "posts" postCtx (return posts) `mappend`
-                    listField "projects" postCtx (return projects) `mappend`
-                    constField "title" "Archives"            `mappend`
-                    defContext
-
-            makeItem ""
-                >>= loadAndApplyTemplate "templates/archive.html" archiveCtx
+            let indexKinds = filter (\(_,_,ts,_) -> ts /= "posts") kinds
+            archive' <- forM kinds $ \(n, t, ts, p) -> do
+              let isPosts = ts == "posts"
+              items' <- forM p $ \(pat, indexed) -> do
+                let pat' = case indexed of
+                      Nothing -> pat
+                      Just idx -> idx
+                members' <- loadAll $ fromGlob $ ts ++ pat'
+                if isPosts
+                  then recentFirst members'
+                  else return members'
+              let items = concat items'
+              let ctx = mconcat
+                    [ listField "items" postCtx (return items)
+                    , constField "archivetitle" n
+                    , defContext
+                    ]
+              makeItem "" >>= if isPosts
+                then loadAndApplyTemplate "templates/post-list.html" ctx
+                else loadAndApplyTemplate "templates/archive.html" ctx
+            archiveMerge <- foldBody archive'
+            let archive = Item
+                  { itemIdentifier = fromFilePath "archive.html"
+                  , itemBody = itemBody archiveMerge
+                  }
+            let archiveCtx = constField "title" "Archive" `mappend` defContext
+            return archive
                 >>= loadAndApplyTemplate "templates/default.html" archiveCtx
                 >>= relativizeUrls
 
@@ -83,10 +155,8 @@ main = hakyllWith myConfig $ do
         route idRoute
         compile $ do
             posts <- recentFirst =<< loadAll "posts/*"
-            projects <- loadAll "projects/*"
             let indexCtx =
                     listField "posts" postCtx (return (take recentPostCount posts)) `mappend`
-                    listField "projects" postCtx (return projects) `mappend`
                     constField "title" "Home"                `mappend`
                     defContext
 

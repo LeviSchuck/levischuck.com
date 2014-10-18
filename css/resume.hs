@@ -11,7 +11,7 @@ inch' x = 72.0 * x
 
 
 main :: IO ()
-main = T.putStr $ renderWith compact $ do
+main = T.putStr $ renderWith compact [] $ do
     let w = inch' 7.5
     body' w
     h1'

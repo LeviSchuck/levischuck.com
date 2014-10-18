@@ -1,0 +1,5 @@
+---
+title: Solar
+---
+
+Stuff soon.

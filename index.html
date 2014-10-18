@@ -29,7 +29,7 @@ Often, I go out with an old roommate to Thai, Vietnamese, and Indian restaurants
 Fast food is often dull and leaves a bad taste.
 Lately I have been practicing with chopsticks, and I think I am getting better.
 Soups like ph&#7903; are quite different to what I have grown up with.
-Usually, I like my foreign foods with beef when there's an option between beef, pork, and chicken. 
+Usually, I like my foreign foods with beef when there's an option between beef, pork, and chicken.
 </p>
 
 <h2>An Australian called me a confused hipster.</h2>
@@ -49,5 +49,10 @@ I am also an eagle scout
 </p>
 
 <h2>A few recent posts</h2>
-$partial("templates/post-list.html")$
-
+<ul>
+		$for(posts)$
+				<li>
+						<a href="$url$">$title$</a> - $date$
+				</li>
+		$endfor$
+</ul>
