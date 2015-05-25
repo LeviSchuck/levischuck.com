@@ -20,7 +20,6 @@ main = T.putStr $ renderWith compact [] $ do
         backgroundColor "#F7F7F7"
         basetextcolor
         backgroundImage $ url "/images/dots.svg"
-        fontFamily ["Libre Baskerville"] [serif]
         fontSize $ pct 100
         "line-height" -: "1.25"
         padding 0 0 0 0
@@ -43,7 +42,8 @@ main = T.putStr $ renderWith compact [] $ do
                 marginLeft $ px 12
                 textDecoration none
                 textTransform uppercase
-
+    "#content" ? do
+        fontFamily ["Libre Baskerville"] [serif]
     "#logo" ? a ? do
         basetextcolor
         float floatLeft

@@ -85,12 +85,13 @@ High School
 :   * 2nd place in Information Systems in FBLA at state
     * 2nd place in regional programming competition at [WKU][]
     * Eagle Scout with cemetery restoration ~ May 2010
+    <!-- stupid pandoc, I shouldn't have to treat you like IE6 -->
 
 ## Activities
 
 University
-:   Member][] of the Brigham Young University
-    Association of Computing Machinery.
+:   Member of the Brigham Young University
+    Association of Computing Machinery before graduation.
 
 Editor
 :   Technical editor for the [Rook's Guide to C++][rook], a creative 
