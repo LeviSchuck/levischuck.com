@@ -4,7 +4,7 @@ title: Getting Started
 description: ""
 category: General
 tags: [engine, entity system, definitions, introduction, plans]
-tagline : Welcome, welcome to city 17.
+tagline: Welcome, welcome to city 17.
 comments: true
 ---
 

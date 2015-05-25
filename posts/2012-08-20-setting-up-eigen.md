@@ -4,7 +4,7 @@ title: Setting up Eigen
 description: Eigen is a C++ template library for linear algebra: matrices, vectors, numerical solvers, and related algorithms.
 category: Setup
 tags: [C++, environment, windows, linux, mac, Math, library, Eigen]
-tagline : I can see your MIT education really pays for itself. 
+tagline: I can see your MIT education really pays for itself. 
 comments: true
 ---
 

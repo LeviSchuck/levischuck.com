@@ -4,7 +4,7 @@ title: Engine Scripting thoughts
 description: My thoughts about separating the engine from the game-specific code
 category: Notes
 tags: [engine, plans, thoughts, Google Protobuf]
-tagline : They say he was at ground zero.
+tagline: They say he was at ground zero.
 comments: true
 ---
 

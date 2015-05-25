@@ -4,7 +4,7 @@ title: Xcode gotcha
 description: "A little gotcha that I got while trying to use xcode"
 category: Setup 
 tags: [environment, mac, xcode, library, include, angelscript, POCO]
-tagline : Another Successful procedure.
+tagline: Another Successful procedure.
 comments: true
 ---
 

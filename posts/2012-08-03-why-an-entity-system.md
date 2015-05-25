@@ -4,7 +4,7 @@ title: Why an Entity System?
 description: What is an entity system, why do I want it, why is it useful?
 category: General
 tags: [engine, entity system]
-tagline : Please disregard any undeserved complements.
+tagline: Please disregard any undeserved complements.
 comments: true
 ---
 

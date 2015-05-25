@@ -6,6 +6,7 @@ import qualified Data.Map as M
 import qualified Data.Set as S
 import           Control.Monad
 import            Data.String(IsString(..))
+import           Debug.Trace
 
 recentPostCount :: Int
 recentPostCount = 5
@@ -66,14 +67,15 @@ main = hakyllWith myConfig $ do
     match "css/*.css" $ idCopy
 
     match "css/*.hs" $ do
-        route   $ setExtension "css"
-        compile $ getResourceString >>= withItemBody (unixFilter "runghc" [])
+      route   $ setExtension "css"
+      compile $ getResourceString >>= withItemBody (unixFilter "runghc" [])
     match "graphs/*.dot" $ do
+      version "svg" $ do
         route   $ setExtension "svg"
-        compile $ getResourceString >>= withItemBody (unixFilter "dot" ["-Tsvg"])
-    match "graphs/*.dot" $ do
+        compile $ getResourceLBS >>= withItemBody (unixFilterLBS "dot" ["-Tsvg"])
+      version "png" $ do
         route   $ setExtension "png"
-        compile $ getResourceString >>= withItemBody (unixFilter "dot" ["-Tpng"])
+        compile $ getResourceLBS >>= withItemBody (unixFilterLBS "dot" ["-Tpng"])
 
     let htmlWith = \template -> do
         route   $ setExtension "html"
@@ -120,8 +122,7 @@ main = hakyllWith myConfig $ do
     create ["archive.html"] $ do
         route idRoute
         compile $ do
-            let indexKinds = filter (\(_,_,ts,_) -> ts /= "posts") kinds
-            archive' <- forM kinds $ \(n, t, ts, p) -> do
+            archive' <- forM kinds $ \(n, _, ts, p) -> do
               let isPosts = ts == "posts"
               items' <- forM p $ \(pat, indexed) -> do
                 let pat' = case indexed of

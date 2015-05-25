@@ -4,7 +4,7 @@ title: Plane Ramblings
 description: Thoughts I had while on a return trip on a plane
 category: Notes
 tags: [notes, thoughts, engine, design]
-tagline : Let me remind all citizens of the dangers of magical thinking.
+tagline: Let me remind all citizens of the dangers of magical thinking.
 comments: true
 ---
 

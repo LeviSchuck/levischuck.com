@@ -19,5 +19,5 @@ executable levischuck
   main-is:             Main.hs
   ghc-options:         -Wall
   -- other-modules:       
-  build-depends:       base ==4.*, hakyll ==4.*, pandoc, containers
+  build-depends:       base ==4.*, hakyll >=4.6, pandoc, containers
   hs-source-dirs:      src

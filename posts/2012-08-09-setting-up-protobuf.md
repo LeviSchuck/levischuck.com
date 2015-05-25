@@ -4,7 +4,7 @@ title: Setting up Protobuf
 description: Setting up Google Protobuf for development environments
 category: Setup
 tags: [Google Protobuf, libraries, C++, environment, windows, linux, mac, library]
-tagline : "Dog, throw something bigger!"
+tagline: "Dog, throw something bigger!"
 comments: true
 ---
 

@@ -4,7 +4,7 @@ title: Getting POCO setup
 description: Getting POCO set up for compiling on platforms
 category: Setup
 tags: [POCO, libraries, C++, environment, windows, linux, mac, library]
-tagline : Do you know who ate all the donuts?
+tagline: Do you know who ate all the donuts?
 comments: true
 ---
 So what is [poco][]?

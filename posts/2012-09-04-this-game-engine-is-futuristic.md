@@ -4,7 +4,7 @@ title: This Game Engine is Futuristic!
 description: Supporting mechanisms of Asynchronous calls and state machines.
 category: Notes
 tags: [Java, FSM, concurrency, asynchronous, data]
-tagline : Yes, yes, I'm not deaf!
+tagline: Yes, yes, I'm not deaf!
 comments: true
 ---
 

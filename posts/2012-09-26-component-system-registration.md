@@ -4,7 +4,7 @@ title: Component System Registration
 description: Thoughts about component systems, events, and registration
 category: Notes
 tags: [engine, thoughts, components]
-tagline : I hate subways.  
+tagline: I hate subways.  
 comments: true
 ---
 
