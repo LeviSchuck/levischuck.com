@@ -183,15 +183,13 @@ postCtx =
     defaultContext
 
 desiredExtensions :: S.Set Extension
-desiredExtensions = wanted -- S.union multimarkdownExtensions wanted
+desiredExtensions = wanted
     where
         wanted = S.fromList
             [ Ext_line_blocks
             , Ext_autolink_bare_uris
             , Ext_footnotes
-            -- , Ext_pipe_tables
-            -- , Ext_implicit_figures
-            -- , Ext_link_attributes
+            , Ext_grid_tables
             ]
 
 readerOptions :: ReaderOptions
@@ -200,12 +198,13 @@ readerOptions = d { readerExtensions = re}
         d = defaultHakyllReaderOptions
         re = S.union (readerExtensions d) desiredExtensions
 
-
-
 pandocOptions :: WriterOptions
 pandocOptions = d { writerExtensions = we}
     where
-        d = defaultHakyllWriterOptions{ writerHTMLMathMethod = MathJax "" }
+        d = defaultHakyllWriterOptions
+          { writerHTMLMathMethod = MathJax ""
+          , writerEmailObfuscation = ReferenceObfuscation
+          }
         we = S.union (writerExtensions d) desiredExtensions
 
 

@@ -45,19 +45,6 @@ August 2010 - December 2012
 
     Developed in **.NET and JavaScript**.
 
-    
-
-January 2013 - July 2013
-:   *Volunteer System Administrator for Fourth Wall LLC*
-    
-    Increased the uptime of a site for a moderately sized community
-    with about 400-500 on-line at any moment. Reduced page execution times
-    by a magnitude and prevented future disk failures by reducing
-    disk thrashing. Fixed bugs in the local PHPFox installation
-    and implemented caching mechanisms that increased the request load
-    capacity of the server.
-
-    Developed in **PHP**.
 
 
 ## Education
@@ -71,22 +58,26 @@ January 2013 - July 2013
 
 ## Skills
 
-Languages
-:   + **C, C++** for cross platform development from utilities
-        to server applications
-    + **Haskell** for personal projects and server back end programming
-    + **Javascript and Node.js** for responsive real-time web applications
-    + **PHP** for large structured applications
-    + **C# and VB.NET** for desktop applications, web services, and
-        large data reports
-    + **Java** for data structures and UI development
+### Languages
 
-Databases
-:   | Moderate   | Some    | Experimental |
-    |:-----------|:--------|:-------------|
-    | Oracle     | MongoDB | Riak         |
-    | MySQL      | Redis   | OrientDB     |
-    | PostgreSQL |         |              |
++ **C, C++** for cross platform development from utilities to server applications
++ **Haskell** for personal projects and server back end programming
++ **Javascript and Node.js** for responsive real-time web applications
++ **PHP** for large structured applications
++ **Java** for data structures and UI development
++ **C# and VB.NET** for desktop applications, web services, and large data reports
+
+###Databases
+
++------------+---------+--------------+
+| Moderate   | Some    | Experimental |
++============+=========+==============+
+| Oracle     | MongoDB | Riak         |
++------------+---------+--------------+
+| MySQL      | Redis   | OrientDB     |
++------------+---------+--------------+
+| PostgreSQL |         |              |
++------------+---------+--------------+
 
 ## Awards
 
@@ -98,11 +89,11 @@ High School
 ## Activities
 
 University
-:   I am a [Member][] of the Brigham Young University
+:   Member][] of the Brigham Young University
     Association of Computing Machinery.
 
 Editor
-:   I am a technical editor for the [Rook's Guide to C++][rook], a creative 
+:   Technical editor for the [Rook's Guide to C++][rook], a creative 
     commons text book for those starting with C++.
 
 Open Source Projects
