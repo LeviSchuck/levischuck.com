@@ -5,7 +5,7 @@ import           Data.Monoid
 import           Control.Monad
 
 main :: IO ()
-main = putCss $ do
+main = T.putStr $ renderWith compact [] $ do
 	pre # ".sourceCode" ? do
         ".kw" ? do
             color "#F92672" -- Keyword
@@ -34,4 +34,3 @@ main = putCss $ do
         backgroundColor "#272822"
         color white
         overflowY scroll
-		

@@ -93,5 +93,5 @@ blockquote' = blockquote ? do
     textAlign $ alignSide sideCenter
 p' :: Css
 p' = p ? do
-    marginTop 0
+    marginTop nil
     marginBottom $ px 7

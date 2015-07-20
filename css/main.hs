@@ -22,16 +22,16 @@ main = T.putStr $ renderWith compact [] $ do
         backgroundImage $ url "/images/dots.svg"
         fontSize $ pct 100
         "line-height" -: "1.25"
-        padding 0 0 0 0
-        margin 0 0 0 0
+        padding nil nil nil nil
+        margin nil nil nil nil
     "#bodyWrap" ? do
         maxWidth $ em 40
-        sym2 margin 0 auto
+        sym2 margin nil auto
         -- backgroundColor white
-        boxShadow 0 (px 1) (px 6) (rgba 0 0 0 15)
+        boxShadow nil (px 1) (px 6) (rgba 0 0 0 15)
     "#header" ? do
         borderBottom solid (px 2) black
-        sym2 padding (px 12) 0
+        sym2 padding (px 12) nil
         marginBottom $ px 30
         "#navigation" ? do
             textAlign $ alignSide sideRight
@@ -55,15 +55,15 @@ main = T.putStr $ renderWith compact [] $ do
         secondcolor
         fontSize $ px 12
         marginTop $ px 30
-        sym2 padding (px 12) 0
+        sym2 padding (px 12) nil
         textAlign $ alignSide sideRight
     ".info" ? do
         secondcolor
         fontSize $ px 14
         fontStyle italic
     (h1 <> h2 <> h3 <> h4 <> h5) ? do
-        marginTop 0
-        marginBottom 0
+        marginTop nil
+        marginBottom nil
         marginLeft $ px 14
         color "#222A40"
     (p
@@ -83,15 +83,15 @@ main = T.putStr $ renderWith compact [] $ do
         textAlign $ alignSide sideRight
         backgroundColor $ "#D82545"
         color white
-        margin 0 0 0 0
+        margin nil nil nil nil
         fontSize (pct 125)
         (a <> h1 <> h2 <> h3 <> h4 <> h5) ? do
             color white
     ".figure" ? do
         textAlign $ alignSide sideCenter
     figure ? do
-        marginLeft 0
-        marginRight 0
+        marginLeft nil
+        marginRight nil
     figcaption ? do
         textAlign $ alignSide sideCenter
     let defSpace = 8
@@ -116,10 +116,10 @@ main = T.putStr $ renderWith compact [] $ do
             paddingLeft $ em 0.5
             borderLeft dashed (px 1) white
             p ? do
-                marginLeft 0
-                paddingLeft 0
-                marginTop 0
-                marginBottom 0
-                paddingBottom 0
+                marginLeft nil
+                paddingLeft nil
+                marginTop nil
+                marginBottom nil
+                paddingBottom nil
         dd # mylastChild ? do
-            marginBottom 0
+            marginBottom nil
