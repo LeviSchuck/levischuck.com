@@ -1,12 +1,12 @@
 {-# LANGUAGE OverloadedStrings #-}
-import           Data.Monoid (mappend,mconcat)
+-- import           Data.Monoid (mappend,mconcat)
 import           Hakyll
 import           Text.Pandoc.Options
-import qualified Data.Map as M
+-- import qualified Data.Map as M
 import qualified Data.Set as S
 import           Control.Monad
-import            Data.String(IsString(..))
-import           Debug.Trace
+import           Data.String(IsString(..))
+-- import           Debug.Trace
 
 recentPostCount :: Int
 recentPostCount = 5
@@ -68,7 +68,7 @@ main = hakyllWith myConfig $ do
 
     match "css/*.hs" $ do
       route   $ setExtension "css"
-      compile $ getResourceString >>= withItemBody (unixFilter "runghc" [])
+      compile $ getResourceString >>= withItemBody (unixFilter "cabal" ["exec", "--", "runghc"])
     match "graphs/*.dot" $ do
       version "svg" $ do
         route   $ setExtension "svg"
@@ -210,13 +210,16 @@ pandocOptions = d { writerExtensions = we}
 
 mathCtx :: Context a
 mathCtx = field "mathjax" $ \item -> do
-    metadata <- getMetadata $ itemIdentifier item
-    return $ if "mathjax" `M.member` metadata
-                  then "<script type=\"text/javascript\" src=\"http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML\"></script>"
-                  else ""
+  let identifier = itemIdentifier item
+  meta <- getMetadataField identifier "mathjax"
+  case meta of
+    Nothing -> return ""
+    Just _ -> return "<script type=\"text/javascript\" src=\"http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML\"></script>"
+
 tweetCtx :: Context a
 tweetCtx = field "tweets" $ \item -> do
-    metadata <- getMetadata $ itemIdentifier item
-    return $ if M.member "tweets" metadata
-        then "<script async src=\"//platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>"
-        else ""
+  let identifier = itemIdentifier item
+  meta <- getMetadataField identifier "tweets"
+  case meta of
+    Nothing -> return ""
+    Just _ -> return "<script async src=\"//platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>"

@@ -2,3 +2,6 @@ _cache
 _site
 dist
 .DS_Store
+.cabal-sandbox
+cabal.sandbox.config
+
