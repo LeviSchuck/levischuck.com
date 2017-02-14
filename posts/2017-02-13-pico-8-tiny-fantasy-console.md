@@ -36,7 +36,7 @@ Luckily, you can use (ctrl/cmd)+(A/C/P) to copy and paste the code
 to another editor--as 128 pixels wide is quite limiting.
 
 ### Tiny demo for a tiny console
-If you want to try out [my firts cart][spoopy], hit play.
+If you want to try out [my first cart][spoopy], hit play.
 It also has some short tune, though I can't claim much musical affinity.
 *However, inputs are ignored, treat it as a video, not a game*
 
