@@ -8,7 +8,7 @@ The thing about consoles is that to be real time, you need to
 abide by and respect limitations.
 As opposed to using `malloc` and `new` all over the place,
 console programming requires preallocation and pools to be
-predictable and resiliant in a constrained environment.
+predictable and resilient in a constrained environment.
 
 It looks like [lexaloffle][] decided to make an engine of sorts,
 combined with development tools to make things happen!
@@ -28,7 +28,7 @@ It is quite restrictive, but it comes with some pretty neat tools:
 Game code executes a version of [lua][].
 As with the restrictive elements of PICO 8, game code is also limited.
 It appears that counting of code size in lua is not characters,
-but rather AST elemements.
+but rather AST elements.
 
 ![](/images/pico/code.png)
 
@@ -52,12 +52,12 @@ It's got a simple API to write pixels to the screen, though as an
 I attempted to make a [distance aided raymarcher][raymarch], turns out that
 even when doing ray calculation wrong, you can get interesting results.
 However, these results are primarily an artifact of how many steps it
-takes to overflow the floats.
+takes to overflow the fractional numbers.
 
 Yes, overflow. Turns out that the PICO 8 uses fixed point math!
-It's pretty neat, something I've wanted to try on microcontrollers
+It's pretty neat, something I've wanted to try on micro-controllers
 and such.
-However, such floats miss a significant benefit! Infinity!
+However, such arithmetic miss a significant benefit! Infinity!
 That is, instead of overflowing from positive to negative or vice versa,
 [IEEE 754 Floating Point][IEEE754], standard floating points we know
 and love have a couple magic values that can be occupied.
